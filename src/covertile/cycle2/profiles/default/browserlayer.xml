@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<layers>
+  <layer
+      name="covertile.cycle2"
+      interface="covertile.cycle2.interfaces.IBrowserLayer"
+      />
+</layers>

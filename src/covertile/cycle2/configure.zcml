@@ -1,0 +1,12 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="covertile.cycle2">
+
+  <five:registerPackage package="." />
+  <include package="collective.js.cycle2"/>
+  <!--i18n:registerTranslations directory="locales" /-->
+  <include file="profiles.zcml" />
+
+</configure>
