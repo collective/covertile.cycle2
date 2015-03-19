@@ -1,0 +1,19 @@
+<registry>
+
+  <!-- Register the Cycle2 Carousel Tile -->
+  <record name="plone.app.tiles">
+    <value purge="false">
+      <element>covertile.cycle2.carousel</element>
+    </value>
+  </record>
+
+  <!-- Make our Cycle2 Carousel tile available to add -->
+  <record name="collective.cover.controlpanel.ICoverSettings.available_tiles" 
+          interface="collective.cover.controlpanel.ICoverSettings" 
+          field="available_tiles">
+    <value purge="false">
+      <element>covertile.cycle2.carousel</element>
+    </value>
+  </record>
+
+</registry>

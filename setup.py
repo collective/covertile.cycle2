@@ -18,6 +18,7 @@ setup(
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
+        'Framework :: Plone',
         'Framework :: Plone :: 4.3',
         'Intended Audience :: End Users/Desktop',
         'Intended Audience :: System Administrators',

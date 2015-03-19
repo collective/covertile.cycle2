@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="covertile.cycle2">
+
+    <include package="plone.tiles" file="meta.zcml" />
+    <include package="plone.tiles" />
+
+    <plone:tile
+        name="covertile.cycle2.carousel"
+        title="Carousel Tile"
+        description="A tile that shows a carousel of images."
+        icon="++resource++collective.cover/tile-carousel.png"
+        add_permission="cmf.ModifyPortalContent"
+        schema=".carousel.ICarouselTile"
+        class=".carousel.CarouselTile"
+        permission="zope2.View"
+        for="*"
+        />
+
+</configure>

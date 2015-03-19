@@ -19,6 +19,7 @@ class Fixture(PloneSandboxLayer):
 
     def setUpPloneSite(self, portal):
         self.applyProfile(portal, 'collective.cover:default')
+        self.applyProfile(portal, 'collective.cover:testfixture')
         self.applyProfile(portal, 'covertile.cycle2:default')
 
 
