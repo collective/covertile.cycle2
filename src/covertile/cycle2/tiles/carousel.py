@@ -21,8 +21,8 @@ class ICarouselTile(IListTile):
     #form.no_omit(ITileEditForm, 'autoplay')
     autoplay = schema.Bool(
         title=_(u'Auto play'),
-        default=False,
         required=False,
+        default=True,
     )
 
     form.no_omit(ITileEditForm, 'uuids')
@@ -54,9 +54,12 @@ class CarouselTile(ListTile):
 
     @property
     def paused(self):
-        """Return True if the carousel will begin in a paused state."""
-        paused = not self.data.get('autoplay', False)
-        return str(paused).lower()
+        """ Return 'true' or 'false' depending on whether the carousel 
+            will begin in a paused state. Value is intended for Javascript."""
+        autoplay = self.data.get('autoplay', None) # autoplay init'd to None
+        autoplay = True if autoplay is None else autoplay # default to True
+        paused_str = str(not autoplay).lower()
+        return paused_str
 
     def get_title(self, item):
         """Get the title of the item, or the custom title if set.
