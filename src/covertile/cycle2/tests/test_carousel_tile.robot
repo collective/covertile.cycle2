@@ -13,7 +13,7 @@ ${document_selector}  //div[@id="content-trees"]//li[@class="ui-draggable"]/a[@d
 ${image_selector1}  //div[@id="content-trees"]//li[@class="ui-draggable"]/a[@data-ct-type="Image"]/span[text()='my-image1']/..
 ${image_selector2}  //div[@id="content-trees"]//li[@class="ui-draggable"]/a[@data-ct-type="Image"]/span[text()='my-image2']/..
 ${tile_selector}  div.tile-container div.tile
-${autoplay_id}  collective-cover-carousel-autoplay-0
+${autoplay_id}  covertile-cycle2-carousel-autoplay-0
 ${edit_link_selector}  a.edit-tile-link
 
 *** Keywords ***
@@ -28,7 +28,6 @@ Get Total Carousel Images
 *** Test cases ***
 
 Test Carousel Tile
-    [Tags]  Expected Failure
 
     Enable Autologin as  Site Administrator
     Go to Homepage
@@ -84,10 +83,10 @@ Test Carousel Tile
 
     Drag And Drop  xpath=${document_selector}  css=${tile_selector}
 
-    # Documents are (at least slightly) revived in Carousel thanks to Cycle2
+    # Any content without an image is silently ignored, so we should not see the Document
     Click Link  link=View
-    Wait Until Page Contains  My document
-    Page Should Contain  This document was created for testing purposes
+    # Page Should Not Contain  My document
+    Page Should Not Contain  This document was created for testing purposes
 
     # carousel autoplay is enabled
     Page Should Contain Element  xpath=//div[contains(@class,"cycle2-carousel") and @data-cycle-paused="false"]
