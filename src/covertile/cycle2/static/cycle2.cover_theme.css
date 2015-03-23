@@ -13,12 +13,12 @@
   z-index: 110;
 }
 .cycle-prev {
-    background: url("++resource++collective.cover/cycle2-theme/prev-arrow.png") no-repeat scroll 10% 50% rgba(0, 0, 0, 0);
+    background: url("++resource++covertile.cycle2/prev-arrow.png") no-repeat scroll 10% 50% rgba(0, 0, 0, 0);
     left: 0;
     padding-right: 17%;
 }
 .cycle-next {
-    background: url("++resource++collective.cover/cycle2-theme/next-arrow.png") no-repeat scroll 90% 50% rgba(0, 0, 0, 0);
+    background: url("++resource++covertile.cycle2/next-arrow.png") no-repeat scroll 90% 50% rgba(0, 0, 0, 0);
     right: 0;
     padding-left: 17%;
 }
@@ -39,7 +39,7 @@
   padding: 8px;
 }
 .cycle-pager span {
-  background: url("++resource++collective.cover/cycle2-theme/dot.png") no-repeat;
+  background: url("++resource++covertile.cycle2/dot.png") no-repeat;
   display: inline-block;
   font-size: 0;
   height: 16px;
