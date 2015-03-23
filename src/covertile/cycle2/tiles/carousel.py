@@ -17,8 +17,8 @@ class ICarouselTile(IListTile):
 
     """A carousel based on the Cycle2 slideshow plugin for jQuery."""
 
-    #form.omitted('autoplay')
-    #form.no_omit(ITileEditForm, 'autoplay')
+    form.omitted('autoplay')
+    form.no_omit(ITileEditForm, 'autoplay')
     autoplay = schema.Bool(
         title=_(u'Auto play'),
         required=False,
