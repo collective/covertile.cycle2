@@ -10,9 +10,9 @@
 
     <plone:tile
         name="covertile.cycle2.carousel"
-        title="Carousel Tile"
-        description="A tile that shows a carousel of images."
-        icon="++resource++collective.cover/tile-carousel.png"
+        title="Cycle2 Carousel Tile"
+        description="A tile showing Cycle2 based carousel of images."
+        icon="++resource++covertile.cycle2/tile-cycle2-carousel.png"
         add_permission="cmf.ModifyPortalContent"
         schema=".carousel.ICarouselTile"
         class=".carousel.CarouselTile"
