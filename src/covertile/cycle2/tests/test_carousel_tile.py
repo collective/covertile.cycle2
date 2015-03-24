@@ -107,7 +107,7 @@ class CarouselTileTestCase(TestTileMixin, unittest.TestCase):
 
         uuids = ITileDataManager(self.tile).get().get('uuids', None)
 
-        self.assertTrue(isinstance(uuids, dict))
+        self.assertIsInstance(uuids, dict)
         self.assertTrue(len(uuids) == 1)
         self.assertTrue(uuids[obj1.UID()]['order'] == u'0')
 
@@ -118,7 +118,7 @@ class CarouselTileTestCase(TestTileMixin, unittest.TestCase):
 
         uuids = ITileDataManager(self.tile).get().get('uuids', None)
 
-        self.assertTrue(isinstance(uuids, dict))
+        self.assertIsInstance(uuids, dict)
         self.assertTrue(len(uuids) == 2)
         self.assertTrue(uuids[obj1.UID()]['order'] == u'0')
         self.assertTrue(uuids[obj2.UID()]['order'] == u'1')
