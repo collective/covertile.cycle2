@@ -47,12 +47,12 @@ class CarouselTileTestCase(TestTileMixin, unittest.TestCase):
     def test_paused(self):
         # An empty tile is not paused (Autoplay is on)
         self.assertEqual(self.tile.paused, 'false')
-        
+
         # Add content to the tile - Autoplay still on
         obj = self.portal['my-image']
         self.tile.populate_with_object(obj)
         self.assertIn('data-cycle-paused="false"', self.tile())
-        
+
         # Turn Autoplay off - test Cycle2 option set
         data_mgr = ITileDataManager(self.tile)
         data = data_mgr.get()

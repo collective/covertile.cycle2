@@ -7,7 +7,6 @@ from collective.cover.widgets.textlinessortable import TextLinesSortableFieldWid
 from plone import api
 from plone.autoform import directives as form
 from plone.tiles.interfaces import ITileDataManager
-from plone.uuid.interfaces import IUUID
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope import schema
 from zope.interface import implements
@@ -54,10 +53,10 @@ class CarouselTile(ListTile):
 
     @property
     def paused(self):
-        """ Return 'true' or 'false' depending on whether the carousel 
+        """ Return 'true' or 'false' depending on whether the carousel
             will begin in a paused state. Value is intended for Javascript."""
-        autoplay = self.data.get('autoplay', None) # autoplay init'd to None
-        autoplay = True if autoplay is None else autoplay # default to True
+        autoplay = self.data.get('autoplay', None)  # autoplay init'd to None
+        autoplay = True if autoplay is None else autoplay  # default to True
         paused_str = str(not autoplay).lower()
         return paused_str
 
