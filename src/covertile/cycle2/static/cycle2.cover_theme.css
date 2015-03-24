@@ -25,7 +25,9 @@
 .cycle-prev:hover, .cycle-next:hover {
     opacity: 1;
 }
-
+a.edit-tile-link {
+  z-index: 150;
+}
 .cycle-pager-container {
   position: absolute;
   top: 0;
