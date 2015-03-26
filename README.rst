@@ -7,9 +7,10 @@ covertile.cycle2
 Life, the Universe, and Everything
 ----------------------------------
 
-A carousel tile for collective.cover based on the `Cycle2`_ slideshow plugin for jQuery.
+A carousel tile for collective.cover_ based on the `Cycle2`_ slideshow plugin for jQuery.
 
 .. _`Cycle2`: http://jquery.malsup.com/cycle2/
+.. _`collective.cover`: https://pypi.python.org/pypi/collective.cover
 
 Mostly Harmless
 ---------------
@@ -32,7 +33,11 @@ Don't Panic
 Installation
 ^^^^^^^^^^^^
 
-To enable this product in a buildout-based installation:
+To enable this product in a buildout-based installation, first make sure you
+have installed collective.cover_. Then:
+
+.. _`collective.cover`: https://pypi.python.org/pypi/collective.cover#installation
+
 
 1. Edit your buildout.cfg and add ``covertile.cycle2`` to the list of eggs to
    install ::
@@ -47,9 +52,29 @@ take care of updating your system.
 
 Go to the 'Site Setup' page in a Plone site and click on the 'Add-ons' link.
 
-Check the box next to `covertile.cycle2`` and click the 'Activate' button.
+Check the box next to `covertile.cycle2` and click the 'Activate' button.
 
 Use
 ^^^
 
-TBA.
+You should read the below in conjunction with the collective.cover_ documentation.
+
+.. _`collective.cover`: https://github.com/collective/collective.cover/blob/master/docs/end-user.rst
+
+
+Cycle2 Carousel tile
+++++++++++++++++++++
+
+A Cycle2 Carousel tile shows a slideshow made with a list of individual items; every
+item will show an image, title and description, and will also have a link pointing
+back to the original object.  The title, description and link url of individual items
+can be changed by configuring the tile in the Compose view; you can also remove or
+reorder them.
+You can drop any object containing an image into a Carousel tile (though note that
+objects without an image will be discarded without any warning).
+Cycle2 Carousel tiles are 100% responsive, and support native-like swipe movements.
+You can also specify if the carousel will start playing the slideshow
+automatically or not.
+
+The Cycle2 Carousel tile is fully responsive, so be sure to configure it to
+use the image size that fits best the maximum desired size.

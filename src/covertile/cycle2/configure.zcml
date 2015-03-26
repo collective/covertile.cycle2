@@ -6,8 +6,9 @@
     i18n_domain="covertile.cycle2">
 
   <five:registerPackage package="." />
+  <i18n:registerTranslations directory="locales" />
+
   <include package="collective.js.cycle2"/>
-  <!--i18n:registerTranslations directory="locales" /-->
   <include file="profiles.zcml" />
 
   <include package=".tiles" />
