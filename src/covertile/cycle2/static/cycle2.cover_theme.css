@@ -2,6 +2,9 @@
   max-width: 100%;
   overflow: hidden;
 }
+.slide.cycle-slide > a {
+  line-height: 0;
+}
 /* Prev/Next arrows */
 .cycle-prev, .cycle-next {
   cursor: pointer;
@@ -54,15 +57,35 @@ a.edit-tile-link {
 .cycle-pager .cycle-pager-active {
   opacity: 1;
 }
+.cycle-caption {
+  color: white;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 120;
+}
+.cycle-overlay {
+  background: none repeat scroll 0 0 black;
+  bottom: 0;
+  color: white;
+  opacity: 0.5;
+  padding: 15px 0;
+  position: absolute;
+  width: 100%;
+  z-index: 120;
+}
+.cycle-overlay > div {
+  padding: 0 15px;
+}
 .contentActions {
   z-index: 130;
 }
 
 /* Stop Flash of unstyled content */
-.cycle2-carousel .slide {
+.covertile-cycle2 .slide {
   display: none;
 }
 
-.cycle2-carousel .cycle-pager + .slide {
+.covertile-cycle2 .cycle-pager + .slide {
   display: block;
 }
