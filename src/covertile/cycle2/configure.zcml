@@ -8,6 +8,7 @@
   <five:registerPackage package="." />
   <i18n:registerTranslations directory="locales" />
 
+  <include package="collective.cover"/>
   <include package="collective.js.cycle2"/>
   <include file="profiles.zcml" />
 
