@@ -22,7 +22,7 @@ Get Total Carousel Images
     [Documentation]  Total number of images in carousel is stored in this
     ...              element
     # Note: we are a bit lazy about adding concat here, but then how long do you want this line to be?
-    ${return} =  Get Matching XPath Count  //div[contains(@class,"cycle2-carousel")]//div[contains(concat(" ", @class," "), " slide ") and not(contains(@class, "sentinel"))]
+    ${return} =  Get Matching XPath Count  //div[contains(@class,"covertile-cycle2")]//div[contains(concat(" ", @class," "), " slide ") and not(contains(@class, "sentinel"))]
     [Return]  ${return}
 
 *** Test cases ***
@@ -89,7 +89,7 @@ Test Carousel Tile
     Page Should Not Contain  This document was created for testing purposes
 
     # carousel autoplay is enabled
-    Page Should Contain Element  xpath=//div[contains(@class,"cycle2-carousel") and @data-cycle-paused="false"]
+    Page Should Contain Element  xpath=//div[contains(@class,"covertile-cycle2") and @data-cycle-paused="false"]
 
     # edit the tile
     Compose Cover
@@ -103,7 +103,7 @@ Test Carousel Tile
 
     # carousel autoplay is now disabled. Sometimes we need to reload the page.
     Reload Page
-    Page Should Contain Element  xpath=//div[contains(@class,"cycle2-carousel") and @data-cycle-paused="true"]
+    Page Should Contain Element  xpath=//div[contains(@class,"covertile-cycle2") and @data-cycle-paused="true"]
 
     # delete the tile
     Edit Cover Layout
