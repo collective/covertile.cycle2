@@ -8,6 +8,7 @@ from collective.cover.widgets.textlinessortable import TextLinesSortableWidget
 from covertile.cycle2.testing import INTEGRATION_TESTING
 from plone.tiles.interfaces import ITileDataManager
 from plone.uuid.interfaces import IUUID
+from UserDict import UserDict
 
 import unittest
 
@@ -107,7 +108,7 @@ class CarouselTileTestCase(TestTileMixin, unittest.TestCase):
 
         uuids = ITileDataManager(self.tile).get().get('uuids', None)
 
-        self.assertIsInstance(uuids, dict)
+        self.assertIsInstance(uuids, (dict, UserDict))
         self.assertTrue(len(uuids) == 1)
         self.assertTrue(uuids[obj1.UID()]['order'] == u'0')
 
@@ -118,7 +119,7 @@ class CarouselTileTestCase(TestTileMixin, unittest.TestCase):
 
         uuids = ITileDataManager(self.tile).get().get('uuids', None)
 
-        self.assertIsInstance(uuids, dict)
+        self.assertIsInstance(uuids, (dict, UserDict))
         self.assertTrue(len(uuids) == 2)
         self.assertTrue(uuids[obj1.UID()]['order'] == u'0')
         self.assertTrue(uuids[obj2.UID()]['order'] == u'1')
