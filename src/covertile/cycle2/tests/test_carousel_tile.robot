@@ -10,8 +10,13 @@ Suite Teardown  Close all browsers
 
 ${carousel_tile_location}  "covertile.cycle2.carousel"
 ${document_selector}  //div[@id="content-trees"]//li[@class="ui-draggable"]/a[@data-ct-type="Document"]/span[text()='My document']/..
-${image_selector1}  //div[@id="content-trees"]//li[@class="ui-draggable"]/a[@data-ct-type="Image"]/span[text()='my-image1']/..
-${image_selector2}  //div[@id="content-trees"]//li[@class="ui-draggable"]/a[@data-ct-type="Image"]/span[text()='my-image2']/..
+# Previously using "span[text()='my-image1']" below, but image was reindexed in testing.py so real title is now shown
+${image_selector1}  //div[@id="content-trees"]//li[@class="ui-draggable"]/a[@data-ct-type="Image"]/span[text()='Test image #1']/..
+${image_tile}  //div[@data-cycle-title='Test image #1']
+${image_selector2}  //div[@id="content-trees"]//li[@class="ui-draggable"]/a[@data-ct-type="Image"]/span[text()='Test image #2']/..
+${image_tile2}  //div[@data-cycle-title='Test image #2']
+${image_tile2_updated}  //div[@data-cycle-title='New Title']
+
 ${tile_selector}  div.tile-container div.tile
 ${autoplay_id}  covertile-cycle2-carousel-autoplay-0
 ${edit_link_selector}  a.edit-tile-link
@@ -69,7 +74,7 @@ Test Carousel Tile
     # move to the default view and check tile persisted
     Click Link  link=View
     Sleep  5s  Wait for carousel to load
-    Wait Until Page Contains  Test image #2
+    Wait Until Page Contains Element  ${image_tile2}
     Page Should Contain  This image #2 was created for testing purposes
     # we now have 2 images in the carousel
     ${images} =  Get Total Carousel Images
@@ -88,7 +93,57 @@ Test Carousel Tile
     # Page Should Not Contain  My document
     Page Should Not Contain  This document was created for testing purposes
 
-    # carousel autoplay is enabled
+
+    ### Test Custom Title functionality
+
+    Click Link  link=View
+    Wait Until Page Contains Element  xpath=${image_tile}
+    Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #1
+
+    # Go to the right
+    Click Element  xpath=.//div[@class='cycle-next']
+    Wait Until Page Contains Element  xpath=${image_tile2}
+    Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #2
+
+    # Set custom Title
+    Compose Cover
+    Click Link  css=${edit_link_selector}
+    Input Text  xpath=.//div[@class='textline-sortable-element'][2]//input[@class='custom-title-input']  New Title
+    Click Button  Save
+    Sleep  2s  Wait for carousel to load
+
+    Click Link  link=View
+    Wait Until Page Contains Element  xpath=${image_tile}
+    Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #1
+
+    # Go to the right
+    Click Element  xpath=.//div[@class='cycle-next']
+
+    # Test modified Title
+    Wait Until Page Contains Element  xpath=${image_tile2_updated}
+    Element Should Contain  xpath=//div[@class='cycle-overlay']  New Title
+
+
+    ### Test Custom Description functionality
+
+    # Set custom Description & custom URL
+    Compose Cover
+    Click Link  css=${edit_link_selector}
+    Input Text  xpath=.//div[@class='textline-sortable-element'][1]//textarea[@class='custom-description-input']  New Description
+    Input Text  xpath=.//div[@class='textline-sortable-element'][1]//input[@class='custom-url-input']  http://www.google.com
+    Click Button  Save
+    Sleep  2s  Wait for carousel to load
+
+    # Test modified Description & URL
+    Click Link  link=View
+    Wait Until Page Contains Element  xpath=${image_tile}
+    Element Should Contain  xpath=//div[@class='cycle-overlay']  New Description
+    ${image_url} =  Get Element Attribute  css=div.cycle-slide a@href
+    Should Be Equal  ${image_url}  http://www.google.com/
+
+
+    ## Test carousel autoplay
+    # initially enabled
     Page Should Contain Element  xpath=//div[contains(@class,"covertile-cycle2") and @data-cycle-paused="false"]
 
     # edit the tile
@@ -98,8 +153,6 @@ Test Carousel Tile
     # disable carousel autoplay
     Unselect Checkbox  ${autoplay_id}
     Click Button  Save
-    Wait Until Page Contains  Test image #1
-    Page Should Contain  This image #1 was created for testing purposes
 
     # carousel autoplay is now disabled. Sometimes we need to reload the page.
     Reload Page
