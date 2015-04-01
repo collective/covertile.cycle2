@@ -24,8 +24,14 @@ class OverlayTextAreaWidget(TextAreaWidget):
         widget.addFieldClass(self)
         self.value = self.context.get('overlay')
 
-@zope.component.adapter(zope.schema.interfaces.IField, interfaces.IFormLayer)
+@zope.component.adapter(zope.schema.interfaces.IField,
+                        zope.interface.Interface, interfaces.IFormLayer)
 @zope.interface.implementer(interfaces.IFieldWidget)
-def OverlayTextAreaFieldWidget(field, request):
-    """IFieldWidget factory for OverlayTextWidget."""
-    return FieldWidget(field, OverlayTextAreaWidget(request))
+def OverlayTextAreaFieldWidget(field, source, request=None):
+    """IFieldWidget factory for OverlayTextAreaWidget."""
+    # BBB: emulate our pre-2.0 signature (field, request)
+    if request is None:
+        real_request = source
+    else:
+        real_request = request
+    return FieldWidget(field, OverlayTextAreaWidget(real_request))

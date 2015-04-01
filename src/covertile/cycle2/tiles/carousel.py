@@ -133,6 +133,7 @@ class CarouselTile(ListTile):
         return PAGER_TEMPLATES.get(self.pagerclass())
 
     def overlaytemplate(self):
+        import pdb; pdb.set_trace()
         if not self._field_is_visible('overlay'):
             return ''
         else:
