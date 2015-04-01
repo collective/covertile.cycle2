@@ -21,20 +21,11 @@ class OverlayTextAreaWidget(TextAreaWidget):
     def update(self):
         """See z3c.form.interfaces.IWidget."""
         super(TextAreaWidget, self).update()
-        print "hello from OverlayTextAreaWidget"
-        import pdb; pdb.set_trace()
         widget.addFieldClass(self)
         self.value = self.context.get('overlay')
 
-@zope.component.adapter(zope.schema.interfaces.IField,
-                        zope.interface.Interface, interfaces.IFormLayer)
+@zope.component.adapter(zope.schema.interfaces.IField, interfaces.IFormLayer)
 @zope.interface.implementer(interfaces.IFieldWidget)
-def OverlayTextAreaFieldWidget(field, source, request=None):
-    """IFieldWidget factory for SelectWidget."""
-    # BBB: emulate our pre-2.0 signature (field, request)
-    if request is None:
-        real_request = source
-    else:
-        real_request = request
-    print "hello from OverlayTextArea FIELD Widget"
-    return FieldWidget(field, OverlayTextAreaWidget(real_request))
+def OverlayTextAreaFieldWidget(field, request):
+    """IFieldWidget factory for OverlayTextWidget."""
+    return FieldWidget(field, OverlayTextAreaWidget(request))
