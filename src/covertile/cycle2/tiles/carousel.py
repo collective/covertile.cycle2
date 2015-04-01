@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from covertile.cycle2 import _
 from collective.cover.interfaces import ITileEditForm
+from collective.cover.tiles.configuration_view import IDefaultConfigureForm
 from collective.cover.tiles.list import IListTile
 from collective.cover.tiles.list import ListTile
 from collective.cover.widgets.textlinessortable import TextLinesSortableFieldWidget
@@ -10,7 +11,23 @@ from plone.tiles.interfaces import ITileDataManager
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope import schema
 from zope.interface import implements
+from zope.schema.interfaces import IVocabularyFactory
+from zope.schema.vocabulary import SimpleTerm
+from zope.schema.vocabulary import SimpleVocabulary
 
+
+# Types of Pager style used in Carousel Tiles
+PAGER_STYLES = SimpleVocabulary(
+                    [SimpleTerm(value='dots', title=_(u'Dots')),
+                     SimpleTerm(value='numbers', title=_(u'Numbers')),
+                     SimpleTerm(value='thumbnails', title=_(u'Thumbnails'))]
+               )
+
+PAGER_TEMPLATES = {
+        'dots': "<span>&bull;</span>",
+        'numbers': "<strong><a href=#> {{slideNum}} </a></strong>",
+        'thumbnails': "<a href='#'><img src='{{thumbnail}}' width=49 height=49></a>"
+        }
 
 class ICarouselTile(IListTile):
 
@@ -26,6 +43,26 @@ class ICarouselTile(IListTile):
 
     form.no_omit(ITileEditForm, 'uuids')
     form.widget(uuids=TextLinesSortableFieldWidget)
+
+    pager_style = schema.Choice(
+        title=_(u'Pager'),
+        vocabulary=PAGER_STYLES,
+        required=True,
+        default='dots',
+    )
+    form.omitted('pager_style')
+    form.no_omit(IDefaultConfigureForm, 'pager_style')
+    form.widget(pager_style='collective.cover.tiles.configuration_widgets.cssclasswidget.CSSClassFieldWidget')
+
+    overlay = schema.SourceText(
+        title=_(u'Overlay Template'),
+        required=False,
+        default=u'<div id="c2-overlay-title">{{title}}</div>'
+                u'<div id="c2-overlay-desc">{{desc}}</div>',
+    )
+    form.omitted('overlay')
+    form.no_omit(IDefaultConfigureForm, 'overlay')
+    form.widget(overlay='covertile.cycle2.tiles.configuration_widgets.overlaytextarea.OverlayTextAreaFieldWidget')
 
 
 class CarouselTile(ListTile):
@@ -59,6 +96,47 @@ class CarouselTile(ListTile):
         autoplay = True if autoplay is None else autoplay  # default to True
         paused_str = str(not autoplay).lower()
         return paused_str
+
+    def pagerclass(self):
+        pager_style = self.data.get('pager_style', None)
+        # stored value could be none - default should be 'dots'
+        return pager_style or 'dots'
+
+    def pagerthumbnail(self, item):
+        """Return the thumbnail of an image if the item has an image field, the
+        pager_style is 'Thumbnails' and the pager is visible.
+
+        :param item: [required]
+        :type item: content object
+        """
+        #pager_style = self.data.get('pager_style', None)
+        #if pager_style is None or pager_style != 'Thumbnails':
+
+            #return None  # skip expensive image processing
+
+        #if not (self._has_image_field(item) and
+                #self._field_is_visible('pager_style')):
+            #return None
+
+        scales = item.restrictedTraverse('@@images')
+        return scales.scale('image', width=49, height=49, direction='down')
+
+    def pagertemplate(self):
+        #pager_style = self.data.get('pager_style', None)
+        #if pager_style is None or pager_style == 'Dots':
+            #return "<span>&bull;</span>"
+        #elif pager_style == 'Numbers':
+            #return "<strong><a href=#> {{slideNum}} </a></strong>"
+        #elif pager_style == 'Thumbnails':
+            #return "<a href='#'><img src='{{thumbnail}}' width=49 height=49></a>"
+        # return "<a href='#'><img src='{{thumbnail}}' width=49 height=49></a>"
+        return PAGER_TEMPLATES.get(self.pagerclass())
+
+    def overlaytemplate(self):
+        if not self._field_is_visible('overlay'):
+            return ''
+        else:
+            return self.data.get('overlay', '')
 
     def get_title(self, item):
         """Get the title of the item, or the custom title if set.

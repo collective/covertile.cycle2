@@ -31,17 +31,20 @@
       data-cycle-pager=".cycle-pager"
       tal:condition="not:is_empty"
       tal:attributes="id string:cycle-${view/id};
-                      data-cycle-paused view/paused|default">
+                      data-cycle-paused view/paused|default;
+                      data-cycle-pager-template view/pagertemplate;">
     <div class="cycle-prev"></div>
     <div class="cycle-next"></div>
 
     <tal:items repeat="item view/results">
       <div class="slide"
            tal:define="slideimg python:view.thumbnail(item);
+                       thumbnail python: view.pagerthumbnail(item);
                        customUrl python:view.get_url(item);
                        customTitle python:view.get_title(item);
                        customDescription python:view.get_description(item);"
            tal:attributes="data-uid python:view.get_uid(item);
+                           data-thumbnail python: thumbnail and thumbnail.url or None;
                            data-cycle-title customTitle;
                            data-cycle-desc customDescription;">
           <tal:image condition="python:slideimg">
@@ -56,9 +59,10 @@
       </div>
     </tal:items>
     <div class="cycle-caption"/>
-    <div class="cycle-overlay"/>
+    <div class="cycle-overlay" tal:condition="view/overlaytemplate"/>
   </div>
-  <div class="cycle-pager-container">
+  <div class="cycle-pager-container"
+       tal:attributes="class string:cycle-pager-container ${view/pagerclass};">
     <div class="cycle-pager"></div>
   </div>
   <script type="text/javascript"

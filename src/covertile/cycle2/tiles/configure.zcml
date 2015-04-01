@@ -6,6 +6,8 @@
     i18n_domain="covertile.cycle2"
     >
 
+    <include package=".configuration_widgets" />
+
     <include file="tiles.zcml" />
 
 </configure>

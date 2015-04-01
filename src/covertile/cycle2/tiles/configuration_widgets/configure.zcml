@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:z3c="http://namespaces.zope.org/z3c">
+
+    <class class=".overlaytextarea.OverlayTextAreaWidget">
+        <require
+            permission="zope.Public"
+            interface=".overlaytextarea.IOverlayTextAreaWidget"
+            />
+    </class>
+
+  <adapter
+      factory=".overlaytextarea.OverlayTextAreaFieldWidget"
+      for="zope.schema.interfaces.ISourceText
+           z3c.form.interfaces.IFormLayer"
+      />
+
+    <z3c:widgetTemplate
+        mode="configure"
+        widget=".overlaytextarea.IOverlayTextAreaWidget"
+        layer="z3c.form.interfaces.IFormLayer"
+        template="overlaytextarea.pt"
+        />
+
+</configure>
