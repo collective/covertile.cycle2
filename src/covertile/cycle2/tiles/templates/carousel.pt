@@ -32,7 +32,8 @@
       tal:condition="not:is_empty"
       tal:attributes="id string:cycle-${view/id};
                       data-cycle-paused view/paused|default;
-                      data-cycle-pager-template view/pagertemplate;">
+                      data-cycle-pager-template view/pagertemplate;
+                      data-cycle-overlay-template view/overlaytemplate;">
     <div class="cycle-prev"></div>
     <div class="cycle-next"></div>
 
@@ -60,7 +61,7 @@
     </tal:items>
     <div class="cycle-caption"/>
     <div class="cycle-overlay"
-         tal:content="view/overlaytemplate"/>
+         tal:condition="view/overlaytemplate"/>
   </div>
   <div class="cycle-pager-container"
        tal:attributes="class string:cycle-pager-container ${view/pagerclass};">

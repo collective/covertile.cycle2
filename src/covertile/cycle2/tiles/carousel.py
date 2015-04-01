@@ -98,9 +98,14 @@ class CarouselTile(ListTile):
         return paused_str
 
     def pagerclass(self):
-        pager_style = self.data.get('pager_style', None)
+        """
+        """
+        tile_conf = self.get_tile_configuration()
+        pager_conf = tile_conf.get('pager_style', None)
+        #pager_style = pager_conf.get('', None)
         # stored value could be none - default should be 'dots'
-        return pager_style or 'dots'
+        #return pager_style or 'dots'
+        return 'dots'
 
     def pagerthumbnail(self, item):
         """Return the thumbnail of an image if the item has an image field, the
@@ -133,11 +138,15 @@ class CarouselTile(ListTile):
         return PAGER_TEMPLATES.get(self.pagerclass())
 
     def overlaytemplate(self):
-        import pdb; pdb.set_trace()
         if not self._field_is_visible('overlay'):
             return ''
         else:
-            return self.data.get('overlay', '')
+            tile_conf = self.get_tile_configuration()
+            overlay_conf = tile_conf.get('overlay')
+            if overlay_conf is None:
+                return ''
+            else:
+                return overlay_conf.get('template', '')
 
     def get_title(self, item):
         """Get the title of the item, or the custom title if set.
