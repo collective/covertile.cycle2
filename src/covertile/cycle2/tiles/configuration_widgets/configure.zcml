@@ -16,4 +16,18 @@
         template="overlaytextarea.pt"
         />
 
+    <class class=".pagerstylewidget.PagerStyleWidget">
+        <require
+            permission="zope.Public"
+            interface=".pagerstylewidget.IPagerStyleWidget"
+            />
+    </class>
+
+    <z3c:widgetTemplate
+        mode="configure"
+        widget=".pagerstylewidget.IPagerStyleWidget"
+        layer="z3c.form.interfaces.IFormLayer"
+        template="pagerstylewidget.pt"
+        />
+
 </configure>

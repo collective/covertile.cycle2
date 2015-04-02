@@ -20,13 +20,13 @@ from zope.schema.vocabulary import SimpleVocabulary
 PAGER_STYLES = SimpleVocabulary(
                     [SimpleTerm(value='dots', title=_(u'Dots')),
                      SimpleTerm(value='numbers', title=_(u'Numbers')),
-                     SimpleTerm(value='thumbnails', title=_(u'Thumbnails'))]
+                     SimpleTerm(value='thumbnails_square', title=_(u'Square Thumbnails'))]
                )
 
 PAGER_TEMPLATES = {
         'dots': "<span>&bull;</span>",
         'numbers': "<strong><a href=#> {{slideNum}} </a></strong>",
-        'thumbnails': "<a href='#'><img src='{{thumbnail}}' width=49 height=49></a>"
+        'thumbnails_square': "<a href='#'><img src='{{thumbnail}}' width=49 height=49></a>"
         }
 
 class ICarouselTile(IListTile):
@@ -52,7 +52,7 @@ class ICarouselTile(IListTile):
     )
     form.omitted('pager_style')
     form.no_omit(IDefaultConfigureForm, 'pager_style')
-    form.widget(pager_style='collective.cover.tiles.configuration_widgets.cssclasswidget.CSSClassFieldWidget')
+    form.widget(pager_style='covertile.cycle2.tiles.configuration_widgets.pagerstylewidget.PagerStyleFieldWidget')
 
     overlay = schema.SourceText(
         title=_(u'Overlay Template'),
@@ -100,22 +100,25 @@ class CarouselTile(ListTile):
     def pagerclass(self):
         """
         """
+        # check if visible
         tile_conf = self.get_tile_configuration()
         pager_conf = tile_conf.get('pager_style', None)
-        #pager_style = pager_conf.get('', None)
+        pager_style = pager_conf.get('style', None)
         # stored value could be none - default should be 'dots'
-        #return pager_style or 'dots'
-        return 'dots'
+        if not pager_style:
+            return 'dots'
+        else:
+            return pager_style[0]
 
     def pagerthumbnail(self, item):
         """Return the thumbnail of an image if the item has an image field, the
-        pager_style is 'Thumbnails' and the pager is visible.
+        pager_style is Thumbnail based (contains {{thumbnail}}) and the pager is visible.
 
         :param item: [required]
         :type item: content object
         """
         #pager_style = self.data.get('pager_style', None)
-        #if pager_style is None or pager_style != 'Thumbnails':
+        #if pager_style is None or '{{thumbnail}}' not in self.pagertemplate():
 
             #return None  # skip expensive image processing
 
@@ -127,15 +130,7 @@ class CarouselTile(ListTile):
         return scales.scale('image', width=49, height=49, direction='down')
 
     def pagertemplate(self):
-        #pager_style = self.data.get('pager_style', None)
-        #if pager_style is None or pager_style == 'Dots':
-            #return "<span>&bull;</span>"
-        #elif pager_style == 'Numbers':
-            #return "<strong><a href=#> {{slideNum}} </a></strong>"
-        #elif pager_style == 'Thumbnails':
-            #return "<a href='#'><img src='{{thumbnail}}' width=49 height=49></a>"
-        # return "<a href='#'><img src='{{thumbnail}}' width=49 height=49></a>"
-        return PAGER_TEMPLATES.get(self.pagerclass())
+        return PAGER_TEMPLATES.get(self.pagerclass(), '')
 
     def overlaytemplate(self):
         if not self._field_is_visible('overlay'):
