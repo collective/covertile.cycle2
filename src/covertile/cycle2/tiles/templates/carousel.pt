@@ -64,6 +64,7 @@
          tal:condition="view/overlaytemplate"/>
   </div>
   <div class="cycle-pager-container"
+       tal:condition="view/pagertemplate"
        tal:attributes="class string:cycle-pager-container ${view/pagerclass};">
     <div class="cycle-pager"></div>
   </div>

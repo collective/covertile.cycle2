@@ -1,6 +1,34 @@
-<div xmlns="http://www.w3.org/1999/xhtml"
-     xmlns:tal="http://xml.zope.org/namespaces/tal"
-     tal:omit-tag="">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      tal:omit-tag="">
+
+  <tal:stored_data define="stored_data python:view.form.getFieldConfiguration(view);">
+    <div class="visibility-box">
+        <span i18n:translate="">Visible</span>
+        <input type="radio" id="" name="" class=""
+            tabindex="" accesskey="" value="on"
+            tal:attributes="id string:${view/id}-visibility-yes;
+                            name string:${view/name}.visibility;
+                            class view/klass;
+                            tabindex view/tabindex;
+                            checked python:not stored_data.get('visibility', None) and 'checked' or stored_data.get('visibility', None) == 'on' and 'checked';
+                            accesskey view/accesskey|nothing;"/>
+        <label i18n:translate=""
+               tal:attributes="for string:${view/id}-visibility-yes;"
+               class="visibility-yes">Yes</label>
+        <input type="radio" id="" name="" class=""
+            tabindex="" accesskey="" value="off"
+            tal:attributes="id string:${view/id}-visibility-no;
+                            name string:${view/name}.visibility;
+                            class view/klass;
+                            tabindex view/tabindex;
+                            checked python:stored_data.get('visibility', None) == 'off' and 'checked';
+                            accesskey view/accesskey|nothing;"/>
+        <label i18n:translate=""
+                tal:attributes="for string:${view/id}-visibility-no;"
+                class="visibility-no">No</label>
+    </div>
+
 <select id="" name="" class="" tabindex="" disabled="" multiple="" size=""
         tal:attributes="id string:${view/id}-style;
                         name string:${view/name}.style:list;
@@ -40,4 +68,6 @@
 </select>
 <input name="field-empty-marker" type="hidden" value="1"
        tal:attributes="name string:${view/name}-empty-marker" />
-</div>
+  </tal:stored_data>
+</html>
+

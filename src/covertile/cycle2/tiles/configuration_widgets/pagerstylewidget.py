@@ -20,8 +20,9 @@ class PagerStyleWidget(SelectWidget):
         """See z3c.form.interfaces.IWidget."""
         super(SelectWidget, self).update()
         widget.addFieldClass(self)
-        if isinstance(self.context.get('pager_style'), unicode):
-            self.value = [self.context.get('pager_style')]
+        confvalue = self.context.get('pager_style').get('style')
+        if confvalue is not None:
+            self.value = self.context.get('pager_style').get('style')
 
 
 @zope.component.adapter(zope.schema.interfaces.IChoice,

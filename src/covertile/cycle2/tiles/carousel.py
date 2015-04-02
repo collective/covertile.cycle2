@@ -130,7 +130,10 @@ class CarouselTile(ListTile):
         return scales.scale('image', width=49, height=49, direction='down')
 
     def pagertemplate(self):
-        return PAGER_TEMPLATES.get(self.pagerclass(), '')
+        if self._field_is_visible('pager_style'):
+            return PAGER_TEMPLATES.get(self.pagerclass(), '')
+        else:
+            return ''
 
     def overlaytemplate(self):
         if not self._field_is_visible('overlay'):

@@ -57,6 +57,16 @@ a.edit-tile-link {
 .cycle-pager .cycle-pager-active {
   opacity: 1;
 }
+.cycle-pager-container.thumbnails_square .cycle-pager {
+  background: white;
+}
+.cycle-pager-container.thumbnails_square .cycle-pager img {
+  border-radius: 5px;
+  margin-right: 8px;
+}
+.cycle-pager-container.thumbnails_square .cycle-pager a:last-child img {
+  margin-right: 0;
+}
 .cycle-caption {
   color: white;
   position: absolute;
