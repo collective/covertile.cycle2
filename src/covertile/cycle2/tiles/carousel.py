@@ -111,20 +111,17 @@ class CarouselTile(ListTile):
             return pager_style[0]
 
     def pagerthumbnail(self, item):
-        """Return the thumbnail of an image if the item has an image field, the
-        pager_style is Thumbnail based (contains {{thumbnail}}) and the pager is visible.
+        """Return the thumbnail of an image if the pager_style is Thumbnail
+        based (contains {{thumbnail}}) and the pager is visible.
 
         :param item: [required]
         :type item: content object
         """
-        #pager_style = self.data.get('pager_style', None)
-        #if pager_style is None or '{{thumbnail}}' not in self.pagertemplate():
+        if '{{thumbnail}}' not in self.pagertemplate():
+            return None  # skip expensive image processing
 
-            #return None  # skip expensive image processing
-
-        #if not (self._has_image_field(item) and
-                #self._field_is_visible('pager_style')):
-            #return None
+        if not self._field_is_visible('pager_style'):
+            return None
 
         scales = item.restrictedTraverse('@@images')
         return scales.scale('image', width=49, height=49, direction='down')
