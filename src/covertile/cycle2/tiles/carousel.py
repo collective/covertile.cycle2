@@ -2,11 +2,12 @@
 from covertile.cycle2 import _
 from collective.cover.interfaces import ITileEditForm
 from collective.cover.tiles.configuration_view import IDefaultConfigureForm
-from collective.cover.tiles.list import IListTile
+from collective.cover.tiles.base import IPersistentCoverTile
 from collective.cover.tiles.list import ListTile
 from collective.cover.widgets.textlinessortable import TextLinesSortableFieldWidget
 from plone import api
 from plone.autoform import directives as form
+from plone.namedfile.field import NamedBlobImage
 from plone.tiles.interfaces import ITileDataManager
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope import schema
@@ -29,9 +30,57 @@ PAGER_TEMPLATES = {
         'thumbnails_square': "<a href='#'><img src='{{thumbnail}}' width=49 height=49></a>"
         }
 
-class ICarouselTile(IListTile):
+# Note the interface inherits from the base class, but the class inherits from
+# ListTile
+class ICarouselTile(IPersistentCoverTile):
 
     """A carousel based on the Cycle2 slideshow plugin for jQuery."""
+
+    uuids = schema.Dict(
+        title=_(u'Elements'),
+        key_type=schema.TextLine(),
+        value_type=schema.Dict(
+            key_type=schema.TextLine(),
+            value_type=schema.TextLine(),
+        ),
+        required=False,
+    )
+    form.omitted('uuids')
+    form.no_omit(ITileEditForm, 'uuids')
+    form.widget(uuids=TextLinesSortableFieldWidget)
+
+
+    # Copied from From IListTile
+
+    image = NamedBlobImage(
+        title=_(u'Image'),
+        required=False,
+    )
+    form.omitted('image')
+    form.no_omit(IDefaultConfigureForm, 'image')
+
+    tile_title = schema.TextLine(
+        title=_(u'Tile Title'),
+        required=False,
+    )
+    form.omitted('tile_title')
+    form.no_omit(ITileEditForm, 'tile_title')
+
+    more_link = schema.TextLine(
+        title=_('Show more... link'),
+        required=False,
+    )
+    form.omitted('more_link')
+    form.no_omit(ITileEditForm, 'more_link')
+    form.widget(more_link='collective.cover.tiles.edit_widgets.more_link.MoreLinkFieldWidget')
+
+    more_link_text = schema.TextLine(
+        title=_('Show more... link text'),
+        required=False,
+    )
+    form.omitted('more_link_text')
+    form.no_omit(ITileEditForm, 'more_link_text')
+
 
     form.omitted('autoplay')
     form.no_omit(ITileEditForm, 'autoplay')
@@ -41,8 +90,7 @@ class ICarouselTile(IListTile):
         default=True,
     )
 
-    form.no_omit(ITileEditForm, 'uuids')
-    form.widget(uuids=TextLinesSortableFieldWidget)
+    # Fields specific to Carousel tiles
 
     pager_style = schema.Choice(
         title=_(u'Pager'),
@@ -56,9 +104,10 @@ class ICarouselTile(IListTile):
 
     overlay = schema.SourceText(
         title=_(u'Overlay Template'),
+        description=_(u'A Mustache-style template string, in which you can use {{title}}, {{desc}} or {{date}}'),
         required=False,
-        default=u'<div id="c2-overlay-title">{{title}}</div>'
-                u'<div id="c2-overlay-desc">{{desc}}</div>',
+        default=u'<div><div id="c2-overlay-title">{{title}}</div>'
+                u'<div id="c2-overlay-desc">{{desc}}</div></div>',
     )
     form.omitted('overlay')
     form.no_omit(IDefaultConfigureForm, 'overlay')
