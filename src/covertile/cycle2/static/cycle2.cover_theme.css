@@ -94,6 +94,11 @@ a.edit-tile-link {
 .contentActions {
   z-index: 130;
 }
+/* Hide Image position widget */
+#covertile-cycle2-carousel-image-imgsize + span,
+#covertile-cycle2-carousel-image-position {
+  display: none;
+}
 
 /* Stop Flash of unstyled content */
 .covertile-cycle2 .slide {
