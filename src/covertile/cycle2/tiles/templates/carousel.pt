@@ -55,7 +55,7 @@
               <img tal:attributes="src slideimg/url|string:${item/absolute_url}/download;
                                    width slideimg/width;
                                    height slideimg/height;
-                                   alt item/Title;" />
+                                   alt customTitle;" />
             </a>
           </tal:image>
       </div>
