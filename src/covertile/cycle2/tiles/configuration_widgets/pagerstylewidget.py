@@ -19,7 +19,6 @@ class PagerStyleWidget(SelectWidget):
     def update(self):
         """See z3c.form.interfaces.IWidget."""
         super(SelectWidget, self).update()
-        widget.addFieldClass(self)
         confvalue = self.context.get('pager_style').get('style')
         if confvalue is not None:
             self.value = self.context.get('pager_style').get('style')
