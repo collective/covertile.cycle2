@@ -30,6 +30,10 @@ PAGER_TEMPLATES = {
         'thumbnails_square': "<a href='#'><img src='{{thumbnail}}' width=49 height=49></a>"
         }
 
+DEFAULT_PAGER_STYLE = 'dots'
+DEFAULT_OVERLAY_TEMPLATE = (u'<div><div id="c2-overlay-title">{{title}}</div>'
+                            u'<div id="c2-overlay-desc">{{desc}}</div></div>')
+
 # Note the interface inherits from the base class, but the class inherits from
 # ListTile
 class ICarouselTile(IPersistentCoverTile):
@@ -96,7 +100,7 @@ class ICarouselTile(IPersistentCoverTile):
         title=_(u'Pager'),
         vocabulary=PAGER_STYLES,
         required=True,
-        default='dots',
+        default=DEFAULT_PAGER_STYLE,
     )
     form.omitted('pager_style')
     form.no_omit(IDefaultConfigureForm, 'pager_style')
@@ -106,8 +110,7 @@ class ICarouselTile(IPersistentCoverTile):
         title=_(u'Overlay Template'),
         description=_(u'A Mustache-style template string, in which you can use {{title}}, {{desc}} or {{date}}'),
         required=False,
-        default=u'<div><div id="c2-overlay-title">{{title}}</div>'
-                u'<div id="c2-overlay-desc">{{desc}}</div></div>',
+        default=DEFAULT_OVERLAY_TEMPLATE,
     )
     form.omitted('overlay')
     form.no_omit(IDefaultConfigureForm, 'overlay')
@@ -149,15 +152,17 @@ class CarouselTile(ListTile):
     def pagerclass(self):
         """
         """
-        # check if visible
-        tile_conf = self.get_tile_configuration()
-        pager_conf = tile_conf.get('pager_style', None)
-        pager_style = pager_conf.get('style', None)
-        # stored value could be none - default should be 'dots'
-        if not pager_style:
-            return 'dots'
+        if not self._field_is_visible('pager_style'):
+            return ''
         else:
-            return pager_style[0]
+            tile_conf = self.get_tile_configuration()
+            pager_conf = tile_conf.get('pager_style', None)
+            pager_style = pager_conf.get('style', None)
+            # stored value could be none - default should be 'dots'
+            if not pager_style:
+                return DEFAULT_OVERLAY_TEMPLATE
+            else:
+                return pager_style[0]
 
     def pagerthumbnail(self, item):
         """Return the thumbnail of an image if the pager_style is Thumbnail
@@ -186,11 +191,13 @@ class CarouselTile(ListTile):
             return ''
         else:
             tile_conf = self.get_tile_configuration()
-            overlay_conf = tile_conf.get('overlay')
-            if overlay_conf is None:
-                return ''
+            overlay_conf = tile_conf.get('overlay', None)
+            template = overlay_conf.get('template', None)
+            # stored value could be none - default should be '...{{title}}...'
+            if template is None:
+                return DEFAULT_OVERLAY_TEMPLATE
             else:
-                return overlay_conf.get('template', '')
+                return template
 
     def get_title(self, item):
         """Get the title of the item, or the custom title if set.
