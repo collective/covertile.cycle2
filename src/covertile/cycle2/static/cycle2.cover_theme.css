@@ -108,3 +108,7 @@ a.edit-tile-link {
 .covertile-cycle2 .cycle-pager + .slide {
   display: block;
 }
+/* Stops pagers being misplaced when multiple carousel tiles on page */
+.tile {
+  position: relative;
+}
