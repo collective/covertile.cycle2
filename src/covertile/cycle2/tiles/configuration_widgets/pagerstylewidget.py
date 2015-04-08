@@ -19,9 +19,9 @@ class PagerStyleWidget(SelectWidget):
     def update(self):
         """See z3c.form.interfaces.IWidget."""
         super(SelectWidget, self).update()
-        confvalue = self.context.get('pager_style').get('style')
+        confvalue = self.context.get('pager').get('style')
         if confvalue is not None:
-            self.value = self.context.get('pager_style').get('style')
+            self.value = self.context.get('pager').get('style')
 
 
 @zope.component.adapter(zope.schema.interfaces.IChoice, interfaces.IFormLayer)

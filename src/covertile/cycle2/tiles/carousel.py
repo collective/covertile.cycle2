@@ -96,15 +96,15 @@ class ICarouselTile(IPersistentCoverTile):
 
     # Fields specific to Carousel tiles
 
-    pager_style = schema.Choice(
+    pager = schema.Choice(
         title=_(u'Pager'),
         vocabulary=PAGER_STYLES,
         required=True,
         default=DEFAULT_PAGER_STYLE,
     )
-    form.omitted('pager_style')
-    form.no_omit(IDefaultConfigureForm, 'pager_style')
-    form.widget(pager_style='covertile.cycle2.tiles.configuration_widgets.pagerstylewidget.PagerStyleFieldWidget')
+    form.omitted('pager')
+    form.no_omit(IDefaultConfigureForm, 'pager')
+    form.widget(pager='covertile.cycle2.tiles.configuration_widgets.pagerstylewidget.PagerStyleFieldWidget')
 
     overlay = schema.SourceText(
         title=_(u'Overlay Template'),
@@ -152,11 +152,11 @@ class CarouselTile(ListTile):
     def pagerclass(self):
         """
         """
-        if not self._field_is_visible('pager_style'):
+        if not self._field_is_visible('pager'):
             return ''
         else:
             tile_conf = self.get_tile_configuration()
-            pager_conf = tile_conf.get('pager_style', None)
+            pager_conf = tile_conf.get('pager', None)
             pager_style = pager_conf.get('style', None)
             # stored value could be none - default should be 'dots'
             if not pager_style:
@@ -165,7 +165,7 @@ class CarouselTile(ListTile):
                 return pager_style[0]
 
     def pagerthumbnail(self, item):
-        """Return the thumbnail of an image if the pager_style is Thumbnail
+        """Return the thumbnail of an image if the pager style is Thumbnail
         based (contains {{thumbnail}}) and the pager is visible.
 
         :param item: [required]
@@ -174,14 +174,14 @@ class CarouselTile(ListTile):
         if '{{thumbnail}}' not in self.pagertemplate():
             return None  # skip expensive image processing
 
-        if not self._field_is_visible('pager_style'):
+        if not self._field_is_visible('pager'):
             return None
 
         scales = item.restrictedTraverse('@@images')
         return scales.scale('image', width=49, height=49, direction='down')
 
     def pagertemplate(self):
-        if self._field_is_visible('pager_style'):
+        if self._field_is_visible('pager'):
             return PAGER_TEMPLATES.get(self.pagerclass(), '')
         else:
             return ''
