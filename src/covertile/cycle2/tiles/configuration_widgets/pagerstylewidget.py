@@ -24,15 +24,8 @@ class PagerStyleWidget(SelectWidget):
             self.value = self.context.get('pager_style').get('style')
 
 
-@zope.component.adapter(zope.schema.interfaces.IChoice,
-                        zope.interface.Interface,
-                        interfaces.IFormLayer)
+@zope.component.adapter(zope.schema.interfaces.IChoice, interfaces.IFormLayer)
 @zope.interface.implementer(interfaces.IFieldWidget)
-def PagerStyleFieldWidget(field, source, request=None):
+def PagerStyleFieldWidget(field, request):
     """IFieldWidget factory for SelectWidget."""
-    # BBB: emulate our pre-2.0 signature (field, request)
-    if request is None:
-        real_request = source
-    else:
-        real_request = request
-    return FieldWidget(field, PagerStyleWidget(real_request))
+    return FieldWidget(field, PagerStyleWidget(request))
