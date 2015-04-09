@@ -97,6 +97,7 @@ Test Carousel Tile
 
     Click Link  link=View
     Wait Until Element Is Visible  xpath=${slide1}
+    Wait Until Element Is Visible  xpath=//div[@class='cycle-overlay']/div
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #1
 
     # Go to the right
@@ -113,6 +114,7 @@ Test Carousel Tile
 
     Click Link  link=View
     Wait Until Element Is Visible  xpath=${slide1}
+    Wait Until Element Is Visible  xpath=//div[@class='cycle-overlay']/div
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #1
 
     # Go to the right
