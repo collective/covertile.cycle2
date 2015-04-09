@@ -99,13 +99,13 @@ Test Carousel Tile
     ### Test Custom Title functionality
 
     Click Link  link=View
-    Wait Until Element Is Visible  css=${slide1}
-    Wait Until Element Is Visible  css=div.cycle-overlay div
+    Wait Until Page Contains Element  css=${slide1}
+    Wait Until Page Contains Element  css=div.cycle-overlay div
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #1
 
     # Go to the right
     Click Element  xpath=.//div[@class='cycle-next']
-    Wait Until Element Is Visible  css=${slide2}
+    Wait Until Page Contains Element  css=${slide2}
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #2
 
     # Set custom Title
@@ -116,15 +116,15 @@ Test Carousel Tile
     Sleep  2s  Wait for carousel to load
 
     Click Link  link=View
-    Wait Until Element Is Visible  css=${slide1}
-    Wait Until Element Is Visible  css=div.cycle-overlay div
+    Wait Until Page Contains Element  css=${slide1}
+    Wait Until Page Contains Element  css=div.cycle-overlay div
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #1
 
     # Go to the right
     Click Element  xpath=.//div[@class='cycle-next']
 
     # Test modified Title
-    Wait Until Element Is Visible  css=${slide2_updated}
+    Wait Until Page Contains Element  css=${slide2_updated}
     Element Should Contain  xpath=//div[@class='cycle-overlay']  New Title
 
 
@@ -140,7 +140,7 @@ Test Carousel Tile
 
     # Test modified Description & URL
     Click Link  link=View
-    Wait Until Element Is Visible  css=${slide1}
+    Wait Until Page Contains Element  css=${slide1}
     Element Should Contain  xpath=//div[@class='cycle-overlay']  New Description
     ${image_url} =  Get Element Attribute  css=div.cycle-slide a@href
     Should Be Equal  ${image_url}  http://www.google.com/
@@ -171,7 +171,7 @@ Test Carousel Tile
 
     # Overlay should be same as configured above
     Click Link  link=View
-    Wait Until Element Is Visible  css=div.cycle-overlay div
+    Wait Until Page Contains Element  css=div.cycle-overlay div
     Element Should Contain  xpath=//div[@class='cycle-overlay']  What a nice overlay
 
 
