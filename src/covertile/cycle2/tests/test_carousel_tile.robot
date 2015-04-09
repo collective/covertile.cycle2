@@ -12,10 +12,10 @@ ${carousel_tile_location}  "covertile.cycle2.carousel"
 ${document_selector}  //div[@id="content-trees"]//li[@class="ui-draggable"]/a[@data-ct-type="Document"]/span[text()='My document']/..
 # Previously using "span[text()='my-image1']" below, but image was reindexed in testing.py so real title is now shown
 ${image_selector1}  //div[@id="content-trees"]//li[@class="ui-draggable"]/a[@data-ct-type="Image"]/span[text()='Test image #1']/..
-${image_tile}  //div[@data-cycle-title='Test image #1']
+${slide1}  //div[@data-cycle-title='Test image #1'][contains(@class,"cycle-slide-active")]
 ${image_selector2}  //div[@id="content-trees"]//li[@class="ui-draggable"]/a[@data-ct-type="Image"]/span[text()='Test image #2']/..
-${image_tile2}  //div[@data-cycle-title='Test image #2']
-${image_tile2_updated}  //div[@data-cycle-title='New Title']
+${slide2}  //div[@data-cycle-title='Test image #2'][contains(@class,"cycle-slide-active")]
+${slide2_updated}  //div[@data-cycle-title='New Title'][contains(@class,"cycle-slide-active")]
 
 ${tile_selector}  div.tile-container div.tile
 ${autoplay_id}  covertile-cycle2-carousel-autoplay-0
@@ -74,7 +74,7 @@ Test Carousel Tile
     # move to the default view and check tile persisted
     Click Link  link=View
     Sleep  5s  Wait for carousel to load
-    Wait Until Page Contains Element  ${image_tile2}
+    Wait Until Page Contains Element  ${slide2}
     Page Should Contain  This image #2 was created for testing purposes
     # we now have 2 images in the carousel
     ${images} =  Get Total Carousel Images
@@ -90,21 +90,18 @@ Test Carousel Tile
 
     # Any content without an image is silently ignored, so we should not see the Document
     Click Link  link=View
-    # Page Should Not Contain  My document
     Page Should Not Contain  This document was created for testing purposes
 
 
     ### Test Custom Title functionality
 
     Click Link  link=View
-    Wait Until Page Contains Element  xpath=${image_tile}
-    Sleep  2s  Wait for Cycle2 to update overlay
+    Wait Until Element Is Visible  xpath=${slide1}
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #1
 
     # Go to the right
     Click Element  xpath=.//div[@class='cycle-next']
-    Wait Until Page Contains Element  xpath=${image_tile2}
-    Sleep  2s  Wait for Cycle2 to update overlay
+    Wait Until Element Is Visible  xpath=${slide2}
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #2
 
     # Set custom Title
@@ -115,15 +112,14 @@ Test Carousel Tile
     Sleep  2s  Wait for carousel to load
 
     Click Link  link=View
-    Wait Until Page Contains Element  xpath=${image_tile}
-    Sleep  2s  Wait for Cycle2 to update overlay
+    Wait Until Element Is Visible  xpath=${slide1}
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #1
 
     # Go to the right
     Click Element  xpath=.//div[@class='cycle-next']
 
     # Test modified Title
-    Wait Until Page Contains Element  xpath=${image_tile2_updated}
+    Wait Until Element Is Visible  xpath=${slide2_updated}
     Element Should Contain  xpath=//div[@class='cycle-overlay']  New Title
 
 
@@ -139,7 +135,7 @@ Test Carousel Tile
 
     # Test modified Description & URL
     Click Link  link=View
-    Wait Until Page Contains Element  xpath=${image_tile}
+    Wait Until Element Is Visible  xpath=${slide1}
     Element Should Contain  xpath=//div[@class='cycle-overlay']  New Description
     ${image_url} =  Get Element Attribute  css=div.cycle-slide a@href
     Should Be Equal  ${image_url}  http://www.google.com/
