@@ -94,6 +94,7 @@ Test Carousel Tile
 
     # Any content without an image is silently ignored, so we should not see the Document
     Click Link  link=View
+    Sleep  2s  Wait for Carousel to load
     Page Should Not Contain  This document was created for testing purposes
 
 
@@ -113,6 +114,7 @@ Test Carousel Tile
     # Set custom Title
     Compose Cover
     Click Link  css=${edit_link_selector}
+    Wait Until Page Contains  Edit Cycle2 Carousel Tile
     Input Text  xpath=.//div[@class='textline-sortable-element'][2]//input[@class='custom-title-input']  New Title
     Click Button  Save
     Sleep  2s  Wait for carousel to load
@@ -136,6 +138,7 @@ Test Carousel Tile
     # Set custom Description & custom URL
     Compose Cover
     Click Link  css=${edit_link_selector}
+    Wait Until Page Contains  Edit Cycle2 Carousel Tile
     Input Text  xpath=.//div[@class='textline-sortable-element'][1]//textarea[@class='custom-description-input']  New Description
     Input Text  xpath=.//div[@class='textline-sortable-element'][1]//input[@class='custom-url-input']  http://www.google.com
     Click Button  Save
@@ -157,7 +160,7 @@ Test Carousel Tile
     # edit the tile
     Compose Cover
     Click Link  css=${edit_link_selector}
-    Page Should Contain Element  css=.textline-sortable-element
+    Wait Until Page Contains  Edit Cycle2 Carousel Tile
     # disable carousel autoplay
     Unselect Checkbox  ${autoplay_id}
     Click Button  Save
@@ -170,6 +173,7 @@ Test Carousel Tile
     ## Test customized overlay
     Edit Cover Layout
     Click Element  css=a.config-tile-link
+    Wait until page contains  Configure Cycle2 Carousel Tile
     Input Text  css=textarea#covertile-cycle2-carousel-overlay-template  <div>What a nice overlay</div>
     Click Button  Save
 
@@ -187,12 +191,14 @@ Test Carousel Tile
 
     Edit Cover Layout
     Click Element  css=a.config-tile-link
+    Wait until page contains  Configure Cycle2 Carousel Tile
     Select From List  css=select#covertile-cycle2-carousel-pager-style  thumbnails_square
     Click Button  Save
 
     # Test thumbnail pager in place
     Compose Cover
     Page Should Contain Element  css=div.cycle-pager > a > img
+
 
     # delete the tile
     Edit Cover Layout
