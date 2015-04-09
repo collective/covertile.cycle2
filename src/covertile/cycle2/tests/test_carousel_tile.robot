@@ -106,7 +106,7 @@ Test Carousel Tile
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #1
 
     # Go to the right
-    Click Element  xpath=.//div[@class='cycle-next']
+    Click Element  xpath=//div[@class='cycle-next']
     Wait Until Page Contains Element  css=${slide2}
     Sleep  1s  Wait for Cycle2 to transition
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #2
@@ -115,7 +115,7 @@ Test Carousel Tile
     Compose Cover
     Click Link  css=${edit_link_selector}
     Wait Until Page Contains  Edit Cycle2 Carousel Tile
-    Input Text  xpath=.//div[@class='textline-sortable-element'][2]//input[@class='custom-title-input']  New Title
+    Input Text  xpath=//div[@class='textline-sortable-element'][2]//input[@class='custom-title-input']  New Title
     Click Button  Save
     Sleep  2s  Wait for carousel to load
 
@@ -125,7 +125,7 @@ Test Carousel Tile
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #1
 
     # Go to the right
-    Click Element  xpath=.//div[@class='cycle-next']
+    Click Element  xpath=//div[@class='cycle-next']
 
     # Test modified Title
     Wait Until Page Contains Element  css=${slide2_updated}
@@ -139,8 +139,8 @@ Test Carousel Tile
     Compose Cover
     Click Link  css=${edit_link_selector}
     Wait Until Page Contains  Edit Cycle2 Carousel Tile
-    Input Text  xpath=.//div[@class='textline-sortable-element'][1]//textarea[@class='custom-description-input']  New Description
-    Input Text  xpath=.//div[@class='textline-sortable-element'][1]//input[@class='custom-url-input']  http://www.google.com
+    Input Text  xpath=//div[@class='textline-sortable-element'][1]//textarea[@class='custom-description-input']  New Description
+    Input Text  xpath=//div[@class='textline-sortable-element'][1]//input[@class='custom-url-input']  http://www.google.com
     Click Button  Save
     Sleep  2s  Wait for carousel to load
 
