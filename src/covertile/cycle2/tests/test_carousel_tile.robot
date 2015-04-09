@@ -98,11 +98,13 @@ Test Carousel Tile
 
     Click Link  link=View
     Wait Until Page Contains Element  xpath=${image_tile}
+    Sleep  2s  Wait for Cycle2 to update overlay
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #1
 
     # Go to the right
     Click Element  xpath=.//div[@class='cycle-next']
     Wait Until Page Contains Element  xpath=${image_tile2}
+    Sleep  2s  Wait for Cycle2 to update overlay
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #2
 
     # Set custom Title
@@ -114,6 +116,7 @@ Test Carousel Tile
 
     Click Link  link=View
     Wait Until Page Contains Element  xpath=${image_tile}
+    Sleep  2s  Wait for Cycle2 to update overlay
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #1
 
     # Go to the right

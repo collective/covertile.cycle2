@@ -12,27 +12,27 @@ from plone.tiles.interfaces import ITileDataManager
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope import schema
 from zope.interface import implements
-from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
 
 # Types of Pager style used in Carousel Tiles
-PAGER_STYLES = SimpleVocabulary(
-                    [SimpleTerm(value='dots', title=_(u'Dots')),
-                     SimpleTerm(value='numbers', title=_(u'Numbers')),
-                     SimpleTerm(value='thumbnails_square', title=_(u'Square Thumbnails'))]
-               )
+PAGER_STYLES = SimpleVocabulary([
+    SimpleTerm(value='dots', title=_(u'Dots')),
+    SimpleTerm(value='numbers', title=_(u'Numbers')),
+    SimpleTerm(value='thumbnails_square', title=_(u'Square Thumbnails'))
+])
 
 PAGER_TEMPLATES = {
-        'dots': "<span>&bull;</span>",
-        'numbers': "<strong><a href=#> {{slideNum}} </a></strong>",
-        'thumbnails_square': "<a href='#'><img src='{{thumbnail}}' width=49 height=49></a>"
-        }
+    'dots': "<span>&bull;</span>",
+    'numbers': "<strong><a href=#> {{slideNum}} </a></strong>",
+    'thumbnails_square': "<a href='#'><img src='{{thumbnail}}' width=49 height=49></a>"
+}
 
 DEFAULT_PAGER_STYLE = 'dots'
 DEFAULT_OVERLAY_TEMPLATE = (u'<div><div id="c2-overlay-title">{{title}}</div>'
                             u'<div id="c2-overlay-desc">{{desc}}</div></div>')
+
 
 # Note the interface inherits from the base class, but the class inherits from
 # ListTile
@@ -52,7 +52,6 @@ class ICarouselTile(IPersistentCoverTile):
     form.omitted('uuids')
     form.no_omit(ITileEditForm, 'uuids')
     form.widget(uuids=TextLinesSortableFieldWidget)
-
 
     # Copied from From IListTile
 
@@ -84,7 +83,6 @@ class ICarouselTile(IPersistentCoverTile):
     )
     form.omitted('more_link_text')
     form.no_omit(ITileEditForm, 'more_link_text')
-
 
     form.omitted('autoplay')
     form.no_omit(ITileEditForm, 'autoplay')

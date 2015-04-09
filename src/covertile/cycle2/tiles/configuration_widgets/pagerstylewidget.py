@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+import zope.component
 import zope.interface
-import zope.schema
-from z3c.form.widget import FieldWidget
-from z3c.form.browser.select import SelectWidget
+import zope.schema.interfaces
+
 from z3c.form import interfaces
-from z3c.form.browser import widget
+from z3c.form.browser.select import SelectWidget
+from z3c.form.widget import FieldWidget
 
 
 class IPagerStyleWidget(interfaces.ISelectWidget):

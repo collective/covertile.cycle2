@@ -6,7 +6,6 @@ import zope.schema.interfaces
 
 from z3c.form import interfaces
 from z3c.form.browser.textarea import TextAreaWidget
-from z3c.form.browser import widget
 from z3c.form.widget import FieldWidget
 
 
