@@ -54,7 +54,8 @@ Test Carousel Tile
     Open Content Chooser
     Click Element  link=Content tree
     Drag And Drop  xpath=${image_selector1}  css=${tile_selector}
-    Wait Until Page Contains  Test image #1
+    Wait Until Page Contains Element  css=${slide1}
+    Sleep  1s  Wait for Cycle2 to load overlay
     Page Should Contain  This image #1 was created for testing purposes
     # we have 1 image in the carousel
     ${images} =  Get Total Carousel Images
@@ -62,12 +63,12 @@ Test Carousel Tile
 
     # move to the default view and check tile persisted
     Click Link  link=View
-    Wait Until Page Contains  Test image #1
+    Wait Until Page Contains Element  css=${slide1}
+    Sleep  1s  Wait for Cycle2 to load overlay
     Page Should Contain  This image #1 was created for testing purposes
 
     # drag&drop another Image
     Compose Cover
-    Sleep  1s  Wait for carousel to load
     Open Content Chooser
     Click Element  link=Content tree
 
@@ -76,8 +77,8 @@ Test Carousel Tile
 
     # move to the default view and check tile persisted
     Click Link  link=View
-    Sleep  5s  Wait for carousel to load
     Wait Until Page Contains Element  css=${slide2}
+    Sleep  1s  Wait for Cycle2 to transition
     Page Should Contain  This image #2 was created for testing purposes
     # we now have 2 images in the carousel
     ${images} =  Get Total Carousel Images
@@ -100,12 +101,13 @@ Test Carousel Tile
 
     Click Link  link=View
     Wait Until Page Contains Element  css=${slide1}
-    Wait Until Page Contains Element  css=div.cycle-overlay div
+    Sleep  1s  Wait for Cycle2 to load overlay
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #1
 
     # Go to the right
     Click Element  xpath=.//div[@class='cycle-next']
     Wait Until Page Contains Element  css=${slide2}
+    Sleep  1s  Wait for Cycle2 to transition
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #2
 
     # Set custom Title
@@ -117,7 +119,7 @@ Test Carousel Tile
 
     Click Link  link=View
     Wait Until Page Contains Element  css=${slide1}
-    Wait Until Page Contains Element  css=div.cycle-overlay div
+    Sleep  1s  Wait for Cycle2 to load overlay
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #1
 
     # Go to the right
@@ -125,6 +127,7 @@ Test Carousel Tile
 
     # Test modified Title
     Wait Until Page Contains Element  css=${slide2_updated}
+    Sleep  1s  Wait for Cycle2 to transition
     Element Should Contain  xpath=//div[@class='cycle-overlay']  New Title
 
 
@@ -141,6 +144,7 @@ Test Carousel Tile
     # Test modified Description & URL
     Click Link  link=View
     Wait Until Page Contains Element  css=${slide1}
+    Sleep  1s  Wait for Cycle2 to load overlay
     Element Should Contain  xpath=//div[@class='cycle-overlay']  New Description
     ${image_url} =  Get Element Attribute  css=div.cycle-slide a@href
     Should Be Equal  ${image_url}  http://www.google.com/
