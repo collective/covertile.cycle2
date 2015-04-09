@@ -12,10 +12,13 @@ ${carousel_tile_location}  "covertile.cycle2.carousel"
 ${document_selector}  //div[@id="content-trees"]//li[@class="ui-draggable"]/a[@data-ct-type="Document"]/span[text()='My document']/..
 # Previously using "span[text()='my-image1']" below, but image was reindexed in testing.py so real title is now shown
 ${image_selector1}  //div[@id="content-trees"]//li[@class="ui-draggable"]/a[@data-ct-type="Image"]/span[text()='Test image #1']/..
-${slide1}  //div[@data-cycle-title='Test image #1'][contains(@class,"cycle-slide-active")]
+# ${slide1}  //div[@data-cycle-title='Test image #1'][contains(@class,"cycle-slide-active")]
+${slide1}  div.cycle-slide-active[data-cycle-title="Test image #1"]
 ${image_selector2}  //div[@id="content-trees"]//li[@class="ui-draggable"]/a[@data-ct-type="Image"]/span[text()='Test image #2']/..
-${slide2}  //div[@data-cycle-title='Test image #2'][contains(@class,"cycle-slide-active")]
-${slide2_updated}  //div[@data-cycle-title='New Title'][contains(@class,"cycle-slide-active")]
+# ${slide2}  //div[@data-cycle-title='Test image #2'][contains(@class,"cycle-slide-active")]
+${slide2}  div.cycle-slide-active[data-cycle-title="Test image #2"]
+# ${slide2_updated}  //div[@data-cycle-title='New Title'][contains(@class,"cycle-slide-active")]
+${slide2_updated}  div.cycle-slide-active[data-cycle-title="New Title"]
 
 ${tile_selector}  div.tile-container div.tile
 ${autoplay_id}  covertile-cycle2-carousel-autoplay-0
@@ -74,7 +77,7 @@ Test Carousel Tile
     # move to the default view and check tile persisted
     Click Link  link=View
     Sleep  5s  Wait for carousel to load
-    Wait Until Page Contains Element  ${slide2}
+    Wait Until Page Contains Element  css=${slide2}
     Page Should Contain  This image #2 was created for testing purposes
     # we now have 2 images in the carousel
     ${images} =  Get Total Carousel Images
@@ -96,13 +99,13 @@ Test Carousel Tile
     ### Test Custom Title functionality
 
     Click Link  link=View
-    Wait Until Element Is Visible  xpath=${slide1}
-    Wait Until Element Is Visible  xpath=//div[@class='cycle-overlay']/div
+    Wait Until Element Is Visible  css=${slide1}
+    Wait Until Element Is Visible  css=div.cycle-overlay div
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #1
 
     # Go to the right
     Click Element  xpath=.//div[@class='cycle-next']
-    Wait Until Element Is Visible  xpath=${slide2}
+    Wait Until Element Is Visible  css=${slide2}
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #2
 
     # Set custom Title
@@ -113,15 +116,15 @@ Test Carousel Tile
     Sleep  2s  Wait for carousel to load
 
     Click Link  link=View
-    Wait Until Element Is Visible  xpath=${slide1}
-    Wait Until Element Is Visible  xpath=//div[@class='cycle-overlay']/div
+    Wait Until Element Is Visible  css=${slide1}
+    Wait Until Element Is Visible  css=div.cycle-overlay div
     Element Should Contain  xpath=//div[@class='cycle-overlay']  Test image #1
 
     # Go to the right
     Click Element  xpath=.//div[@class='cycle-next']
 
     # Test modified Title
-    Wait Until Element Is Visible  xpath=${slide2_updated}
+    Wait Until Element Is Visible  css=${slide2_updated}
     Element Should Contain  xpath=//div[@class='cycle-overlay']  New Title
 
 
@@ -137,7 +140,7 @@ Test Carousel Tile
 
     # Test modified Description & URL
     Click Link  link=View
-    Wait Until Element Is Visible  xpath=${slide1}
+    Wait Until Element Is Visible  css=${slide1}
     Element Should Contain  xpath=//div[@class='cycle-overlay']  New Description
     ${image_url} =  Get Element Attribute  css=div.cycle-slide a@href
     Should Be Equal  ${image_url}  http://www.google.com/
@@ -158,6 +161,34 @@ Test Carousel Tile
     # carousel autoplay is now disabled. Sometimes we need to reload the page.
     Reload Page
     Page Should Contain Element  xpath=//div[contains(@class,"covertile-cycle2") and @data-cycle-paused="true"]
+
+
+    ## Test customized overlay
+    Edit Cover Layout
+    Click Element  css=a.config-tile-link
+    Input Text  css=textarea#covertile-cycle2-carousel-overlay-template  <div>What a nice overlay</div>
+    Click Button  Save
+
+    # Overlay should be same as configured above
+    Click Link  link=View
+    Wait Until Element Is Visible  css=div.cycle-overlay div
+    Element Should Contain  xpath=//div[@class='cycle-overlay']  What a nice overlay
+
+
+    ## Test selecting thumbnail pager
+    # Check default pager is "dots"
+    Page Should Contain Element  css=div.cycle-pager > span.cycle-pager-active
+    # And that thumbnails are therefore NOT generated
+    Page Should Not Contain Element  xpath=//div[@data-thumbnail]
+
+    Edit Cover Layout
+    Click Element  css=a.config-tile-link
+    Select From List  css=select#covertile-cycle2-carousel-pager-style  thumbnails_square
+    Click Button  Save
+
+    # Test thumbnail pager in place
+    Compose Cover
+    Page Should Contain Element  css=div.cycle-pager > a > img
 
     # delete the tile
     Edit Cover Layout
