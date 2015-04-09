@@ -24,7 +24,7 @@
       data-cycle-center-horz="true"
       data-cycle-center-vert="true"
       data-cycle-paused="true"
-      data-cycle-pause-on-hover="true"
+      data-cycle-pause-on-hover="false"
       data-cycle-slides="> div.slide"
       data-cycle-swipe="true"
       data-cycle-swipe-fx="scrollHorz"
