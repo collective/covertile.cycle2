@@ -70,11 +70,25 @@ item will show an image, title and description, and will also have a link pointi
 back to the original object.  The title, description and link url of individual items
 can be changed by configuring the tile in the Compose view; you can also remove or
 reorder them.
+
+.. figure:: https://raw.github.com/collective/covertile.cycle2/master/edit-covertile-cycle2.png
+    :align: center
+    :height: 719px
+    :width: 1037px
+
 You can drop any object containing an image into a Carousel tile (though note that
 objects without an image will be discarded without any warning).
 Cycle2 Carousel tiles are 100% responsive, and support native-like swipe movements.
 You can also specify if the carousel will start playing the slideshow
-automatically or not.
+automatically or not. The tile can accept a maximum of 100 slides.
 
-The Cycle2 Carousel tile is fully responsive, so be sure to configure it to
-use the image size that fits best the maximum desired size.
+Configuration of the tile allows defining the tile's CSS class, the maximum image size,
+the Overlay template and the Pager Style. The Overlay template is a mustache style HTML template
+which can show the title, description or date for each tile, with {{title}}, {{desc}} or {{date}} respectively.
+The Overlay is the only place the Title & Description of the tiles are shown. But the template
+can easily be overridden using technology such as collective.jbot.
+
+.. figure:: https://raw.github.com/collective/covertile.cycle2/master/configure-covertile-cycle2.png
+    :align: center
+    :height: 420px
+    :width: 565px

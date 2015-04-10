@@ -30,8 +30,8 @@ PAGER_TEMPLATES = {
 }
 
 DEFAULT_PAGER_STYLE = 'dots'
-DEFAULT_OVERLAY_TEMPLATE = (u'<div><div id="c2-overlay-title">{{title}}</div>'
-                            u'<div id="c2-overlay-desc">{{desc}}</div></div>')
+DEFAULT_OVERLAY_TEMPLATE = (u'<div id="c2-overlay-title">{{title}}</div>'
+                            u'<div id="c2-overlay-desc">{{desc}}</div>')
 
 
 # Note the interface inherits from the base class, but the class inherits from
