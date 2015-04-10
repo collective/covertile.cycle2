@@ -20,7 +20,7 @@ class OverlayTextAreaWidget(TextAreaWidget):
     def update(self):
         """See z3c.form.interfaces.IWidget."""
         super(TextAreaWidget, self).update()
-        confvalue = self.context.get('overlay').get('template')
+        confvalue = self.context.get('overlay', {}).get('template')
         if confvalue is not None:
             self.value = self.context.get('overlay').get('template')
 
