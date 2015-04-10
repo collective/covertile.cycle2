@@ -7,7 +7,7 @@ covertile.cycle2
 Life, the Universe, and Everything
 ----------------------------------
 
-A carousel tile for collective.cover_ based on the `Cycle2`_ slideshow plugin for jQuery.
+A carousel tile for `collective.cover`_ based on the `Cycle2`_ slideshow plugin for jQuery.
 
 .. _`Cycle2`: http://jquery.malsup.com/cycle2/
 .. _`collective.cover`: https://pypi.python.org/pypi/collective.cover
@@ -34,9 +34,9 @@ Installation
 ^^^^^^^^^^^^
 
 To enable this product in a buildout-based installation, first make sure you
-have installed collective.cover_. Then:
+have `installed collective.cover`_. Then:
 
-.. _`collective.cover`: https://pypi.python.org/pypi/collective.cover#installation
+.. _`installed collective.cover`: https://pypi.python.org/pypi/collective.cover#installation
 
 
 1. Edit your buildout.cfg and add ``covertile.cycle2`` to the list of eggs to
@@ -57,9 +57,9 @@ Check the box next to `covertile.cycle2` and click the 'Activate' button.
 Use
 ^^^
 
-You should read the below in conjunction with the collective.cover_ documentation.
+You should read the below in conjunction with the `collective.cover documentation`_.
 
-.. _`collective.cover`: https://github.com/collective/collective.cover/blob/master/docs/end-user.rst
+.. _`collective.cover documentation`: https://github.com/collective/collective.cover/blob/master/docs/end-user.rst
 
 
 Cycle2 Carousel tile
