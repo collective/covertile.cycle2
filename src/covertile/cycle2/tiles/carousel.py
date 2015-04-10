@@ -159,7 +159,7 @@ class CarouselTile(ListTile):
             pager_style = pager_conf.get('style', None)
             # stored value could be none - default should be 'dots'
             if not pager_style:
-                return DEFAULT_OVERLAY_TEMPLATE
+                return DEFAULT_PAGER_STYLE
             else:
                 return pager_style[0]
 
