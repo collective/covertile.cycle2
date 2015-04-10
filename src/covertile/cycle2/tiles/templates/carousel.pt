@@ -4,12 +4,6 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="covertile.cycle2">
 
-<head>
-  <link rel="stylesheet" type="text/css"
-      tal:attributes="href string:${context/@@plone_portal_state/portal_url}/++resource++covertile.cycle2/cycle2.cover_theme.css" />
-
-</head>
-
 <body tal:define="is_empty view/is_empty">
 
   <p tal:condition="python: is_empty and view.is_compose_mode()" i18n:translate="">
