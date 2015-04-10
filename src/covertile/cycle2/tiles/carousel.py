@@ -124,6 +124,7 @@ class CarouselTile(ListTile):
     is_configurable = True
     is_editable = True
     short_name = _(u'msg_short_name_carousel', default=u'C2 Carousel')
+    limit = 100      # Increase hard-coded limit in ListTile
 
     def populate_with_object(self, obj):
         """Add an object to the carousel. This method will append new
