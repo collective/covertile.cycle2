@@ -30,6 +30,19 @@ Got an idea? Found a bug? Let us know by `opening a support ticket`_.
 Don't Panic
 -----------
 
+The Carousel looks something like the below out the box (shown mid transition).
+
+.. figure:: https://raw.github.com/collective/covertile.cycle2/master/fading-transition.png
+    :align: center
+    :height: 428px
+    :width: 1138px
+
+There are options for choosing different pagers and customizing the overlay,
+but for *full* control of all the options provided by Cycle2 you will need to
+override the template (easily achievable using technology such as collective.jbot)
+and make CSS tweaks.
+
+
 Installation
 ^^^^^^^^^^^^
 
@@ -85,8 +98,7 @@ automatically or not. The tile can accept a maximum of 100 slides.
 Configuration of the tile allows defining the tile's CSS class, the maximum image size,
 the Overlay template and the Pager Style. The Overlay template is a mustache style HTML template
 which can show the title, description or date for each tile, with {{title}}, {{desc}} or {{date}} respectively.
-The Overlay is the only place the Title & Description of the tiles are shown. But the template
-can easily be overridden using technology such as collective.jbot.
+The Overlay is the only place the Title & Description of the tiles are shown.
 
 .. figure:: https://raw.github.com/collective/covertile.cycle2/master/configure-covertile-cycle2.png
     :align: center
