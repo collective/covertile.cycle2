@@ -65,6 +65,15 @@ a.edit-tile-link {
 .cycle-pager-container.thumbnails_square .cycle-pager a:last-child img {
   margin-right: 0;
 }
+.cycle-pager-container.numbers .cycle-pager {
+  background-color: #222;
+  opacity: 0.6;
+}
+#content .cycle-pager-container.numbers a:link {
+  color: white;
+  font-size: 1.25em;
+  padding: 0 0.25em;
+}
 .cycle-caption {
   color: white;
   position: absolute;
