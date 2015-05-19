@@ -46,14 +46,9 @@ and make CSS tweaks.
 Installation
 ^^^^^^^^^^^^
 
-To enable this product in a buildout-based installation, first make sure you
-have `installed collective.cover`_. Then:
+To enable this package in a buildout-based installation:
 
-.. _`installed collective.cover`: https://pypi.python.org/pypi/collective.cover#installation
-
-
-1. Edit your buildout.cfg and add ``covertile.cycle2`` to the list of eggs to
-   install ::
+#. Edit your buildout.cfg and add ``covertile.cycle2`` to the list of eggs to install::
 
     [buildout]
     ...
