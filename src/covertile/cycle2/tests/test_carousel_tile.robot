@@ -115,7 +115,7 @@ Test Carousel Tile
     Compose Cover
     Click Link  css=${edit_link_selector}
     Wait Until Element Is Visible  css=input.custom-title-input
-    Input Text  xpath=//div[@class='textline-sortable-element'][2]//input[@class='custom-title-input']  New Title
+    Input Text  xpath=//div[contains(@class,"textline-sortable-element")][2]//input[@class='custom-title-input']  New Title
     Click Button  Save
     Sleep  2s  Wait for carousel to load
 
@@ -139,8 +139,8 @@ Test Carousel Tile
     Compose Cover
     Click Link  css=${edit_link_selector}
     Wait Until Element Is Visible  css=textarea.custom-description-input
-    Input Text  xpath=//div[@class='textline-sortable-element'][1]//textarea[@class='custom-description-input']  New Description
-    Input Text  xpath=//div[@class='textline-sortable-element'][1]//input[@class='custom-url-input']  http://www.google.com
+    Input Text  xpath=//div[contains(@class,"textline-sortable-element")][1]//textarea[@class='custom-description-input']  New Description
+    Input Text  xpath=//div[contains(@class,"textline-sortable-element")][1]//input[@class='custom-url-input']  http://www.google.com
     Click Button  Save
     Sleep  2s  Wait for carousel to load
 
