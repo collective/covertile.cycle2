@@ -114,7 +114,7 @@ Test Carousel Tile
     # Set custom Title
     Compose Cover
     Click Link  css=${edit_link_selector}
-    Wait Until Element Is Visible  css=input.custom-title-input
+    Wait Until Element Is Visible  xpath=//div[contains(@class,"textline-sortable-element")]
     Input Text  xpath=//div[contains(@class,"textline-sortable-element")][2]//input[@class='custom-title-input']  New Title
     Click Button  Save
     Sleep  2s  Wait for carousel to load
