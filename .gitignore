@@ -13,4 +13,5 @@ eggs/
 htmlcov/
 include/
 parts/
+src/collective.cover/
 var/
