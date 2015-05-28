@@ -24,9 +24,9 @@ PAGER_STYLES = SimpleVocabulary([
 ])
 
 PAGER_TEMPLATES = {
-    'dots': "<span>&bull;</span>",
-    'numbers': "<strong><a href=#> {{slideNum}} </a></strong>",
-    'thumbnails_square': "<a href='#'><img src='{{thumbnail}}' width=49 height=49></a>"
+    'dots': '<span>&bull;</span>',
+    'numbers': '<strong><a href=#> {{slideNum}} </a></strong>',
+    'thumbnails_square': '<a href="#"><img src="{{thumbnail}}" width=49 height=49></a>'
 }
 
 DEFAULT_PAGER_STYLE = 'dots'
