@@ -1,84 +1,82 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# Manual covertile.cycle2 translations
-# FIRST AUTHOR <daniel@jowettenterprises.com>, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2015-09-03 08:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <daniel@jowettenterprises.com>\n"
+"Last-Translator: Zest Software <info@zestsoftware.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Language-Code: nl\n"
+"Language-Name: Nederlands\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: covertile.cycle2\n"
+"X-Is-Fallback-For: nl-be nl-nl\n"
 
 #: ../tiles/carousel.py:109
 msgid "A Mustache-style template string, in which you can use {{title}}, {{desc}} or {{date}}"
-msgstr ""
+msgstr "Een Mustache (snor) sjabloontekst, waarin {{title}}, {{desc}} or {{date}} te gebruiken zijn"
 
 #: Tile description in tiles/tiles.zcml
 msgid "A tile showing Cycle2 based carousel of images."
-msgstr ""
+msgstr "Een tegel met een afbeeldingscarousel op basis van Cycle2"
 
 #: ../tiles/carousel.py:90
 msgid "Auto play"
-msgstr ""
+msgstr "Automatisch afspelen"
 
 #: Tile title in tiles/tiles.zcml
 msgid "Cycle2 Carousel Tile"
-msgstr ""
+msgstr "Cycle2 Carouseltegel"
 
 #: ../tiles/carousel.py:21
 msgid "Dots"
-msgstr ""
+msgstr "Stippen"
 
 #: ../tiles/carousel.py:44
 msgid "Elements"
-msgstr ""
+msgstr "Elementen"
 
 #: ../tiles/carousel.py:59
 msgid "Image"
-msgstr ""
+msgstr "Afbeelding"
 
 #: ../tiles/carousel.py:22
 msgid "Numbers"
-msgstr ""
+msgstr "Nummers"
 
 #: ../tiles/carousel.py:108
 msgid "Overlay Template"
-msgstr ""
+msgstr "Sjabloon voor tekst"
 
 #: ../tiles/carousel.py:98
 msgid "Pager"
-msgstr ""
+msgstr "Paginatie (pager)"
 
 #: ../tiles/carousel.py:73
 msgid "Show more... link"
-msgstr ""
+msgstr "Toon meer... link"
 
 #: ../tiles/carousel.py:81
 msgid "Show more... link text"
-msgstr ""
+msgstr "Toon meer... link tekst"
 
 #: ../tiles/carousel.py:23
 msgid "Square Thumbnails"
-msgstr ""
+msgstr "Vierkante kleine voorvertoning"
 
 #: ../tiles/templates/carousel.pt:9
 msgid "This carousel is empty; open the content chooser and drag-and-drop some items here."
-msgstr ""
+msgstr "Deze carousel is leeg; open de content chooser en sleep content op de tegel."
 
 #: ../tiles/carousel.py:66
 msgid "Tile Title"
-msgstr ""
+msgstr "Tegeltitel"
 
 #. Default: "C2 Carousel"
 #: ../tiles/carousel.py:126
 msgid "msg_short_name_carousel"
-msgstr ""
+msgstr "C2 Carousel"
 
