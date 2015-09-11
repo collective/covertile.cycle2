@@ -42,6 +42,7 @@
                            data-thumbnail python: thumbnail and thumbnail.url or None;
                            data-cycle-title customTitle;
                            data-cycle-desc customDescription;
+                           data-cycle-url customUrl;
                            data-date python:item.toLocalizedTime();">
           <tal:image condition="python:slideimg">
             <a href="#"

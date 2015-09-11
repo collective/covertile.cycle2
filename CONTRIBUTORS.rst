@@ -6,10 +6,7 @@ Share and Enjoy
 - André Nogueira
 - Daniel Jowett
 - Héctor Velarde
-
-Translations
-
-- Fred van Dijk (Dutch)
+- Fred van Dijk
 
 You can find an updated list of package contributors on `GitHub`_.
 

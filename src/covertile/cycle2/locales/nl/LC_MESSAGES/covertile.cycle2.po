@@ -16,8 +16,8 @@ msgstr ""
 "X-Is-Fallback-For: nl-be nl-nl\n"
 
 #: ../tiles/carousel.py:109
-msgid "A Mustache-style template string, in which you can use {{title}}, {{desc}} or {{date}}"
-msgstr "Een Mustache (snor) sjabloontekst, waarin {{title}}, {{desc}} or {{date}} te gebruiken zijn"
+msgid "A Mustache-style template string, in which you can use {{title}}, {{desc}}, {{url}} or {{date}}"
+msgstr "Een Mustache (snor) sjabloontekst, waarin {{title}}, {{desc}}, {{url}} or {{date}} te gebruiken zijn"
 
 #: Tile description in tiles/tiles.zcml
 msgid "A tile showing Cycle2 based carousel of images."

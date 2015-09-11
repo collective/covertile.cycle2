@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0a2 (unreleased)
 ------------------
 
+- Make {{url}} available in overlay templates so you can put a link to a   carousel item. 
+  [fredvd]
+
 - Add Dutch translations.
   [fredvd]
 
