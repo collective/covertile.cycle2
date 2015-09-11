@@ -15,6 +15,9 @@ There's a frood who really knows where his towel is.
 - Register collective.js.cycle2 resources used in this package in the JavaScript registry.
   [djowett]
 
+- Make {{url}} available in overlay templates so you can put a link to a   carousel item. 
+  [fredvd]
+
 - Add Dutch translations.
   [fredvd]
 
