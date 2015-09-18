@@ -54,6 +54,9 @@ Test Carousel Tile
     Open Content Chooser
     Click Element  link=Content tree
     Drag And Drop  xpath=${image_selector1}  css=${tile_selector}
+
+    # move to the default view and check content persisted
+    Click Link  link=View
     Wait Until Page Contains Element  css=${slide1}
     Sleep  1s  Wait for Cycle2 to load overlay
     Page Should Contain  This image #1 was created for testing purposes
