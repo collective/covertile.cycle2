@@ -8,6 +8,7 @@
 bin/
 coverage/
 develop-eggs/
+dist/
 downloads/
 eggs/
 htmlcov/
