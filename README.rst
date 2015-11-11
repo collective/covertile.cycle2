@@ -62,6 +62,16 @@ Go to the 'Site Setup' page in a Plone site and click on the 'Add-ons' link.
 
 Check the box next to `covertile.cycle2` and click the 'Activate' button.
 
+
+Uninstallation
+^^^^^^^^^^^^^^
+
+This package provides an uninstall Generic Setup profile, however, it will not
+deregister the Cycle2 javascripts from the JS registry dependencies as they
+could be used by other addons. Feel free to manually uninstall these if you
+are sure that you no longer use them.
+
+
 Use
 ^^^
 
