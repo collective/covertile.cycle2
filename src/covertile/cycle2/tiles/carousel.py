@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from covertile.cycle2 import _
 from collective.cover.interfaces import ITileEditForm
-from collective.cover.tiles.configuration_view import IDefaultConfigureForm
 from collective.cover.tiles.base import IPersistentCoverTile
+from collective.cover.tiles.configuration_view import IDefaultConfigureForm
 from collective.cover.tiles.list import ListTile
 from collective.cover.widgets.textlinessortable import TextLinesSortableFieldWidget
+from covertile.cycle2 import _
 from plone import api
 from plone.autoform import directives as form
 from plone.namedfile.field import NamedBlobImage
