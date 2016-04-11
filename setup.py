@@ -57,11 +57,12 @@ setup(
     extras_require={
         'test': [
             'plone.app.robotframework',
-            'plone.app.testing [robot] >=4.2.2',
+            'plone.app.testing [robot]',
             'plone.browserlayer',
             'plone.testing',
             'plone.uuid',
             'robotsuite',
+            'tzlocal',
         ],
     },
     entry_points="""
