@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from collective.cover.testing import ALL_CONTENT_TYPES
 from collective.cover.tests.base import TestTileMixin
-from covertile.cycle2.tiles.carousel import CarouselTile
-from covertile.cycle2.tiles.carousel import ICarouselTile
 from collective.cover.tiles.carousel import UUIDSFieldDataConverter
 from collective.cover.widgets.textlinessortable import TextLinesSortableWidget
 from covertile.cycle2.testing import INTEGRATION_TESTING
+from covertile.cycle2.tiles.carousel import CarouselTile
+from covertile.cycle2.tiles.carousel import ICarouselTile
 from plone.tiles.interfaces import ITileDataManager
 from plone.uuid.interfaces import IUUID
 from UserDict import UserDict
