@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
-from covertile.cycle2 import _
 from collective.cover.interfaces import ITileEditForm
-from collective.cover.tiles.configuration_view import IDefaultConfigureForm
 from collective.cover.tiles.base import IPersistentCoverTile
+from collective.cover.tiles.configuration_view import IDefaultConfigureForm
 from collective.cover.tiles.list import ListTile
 from collective.cover.widgets.textlinessortable import TextLinesSortableFieldWidget
+from covertile.cycle2 import _
 from plone import api
 from plone.autoform import directives as form
 from plone.namedfile.field import NamedBlobImage
 from plone.tiles.interfaces import ITileDataManager
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope import schema
-from zope.interface import implements
+from zope.interface import implementer
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
@@ -115,11 +115,11 @@ class ICarouselTile(IPersistentCoverTile):
     form.widget(overlay='covertile.cycle2.tiles.configuration_widgets.overlaytextarea.OverlayTextAreaFieldWidget')
 
 
+@implementer(ICarouselTile)
 class CarouselTile(ListTile):
 
     """A carousel based on the Cycle2 slideshow plugin for jQuery."""
 
-    implements(ICarouselTile)
     index = ViewPageTemplateFile('templates/carousel.pt')
     is_configurable = True
     is_editable = True

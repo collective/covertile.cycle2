@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-import zope.component
-import zope.interface
-import zope.schema.interfaces
-
 from z3c.form import interfaces
 from z3c.form.browser.textarea import TextAreaWidget
 from z3c.form.widget import FieldWidget
+
+import zope.component
+import zope.interface
+import zope.schema.interfaces
 
 
 class IOverlayTextAreaWidget(interfaces.ITextAreaWidget):
