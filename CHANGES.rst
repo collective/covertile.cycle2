@@ -9,6 +9,9 @@ There's a frood who really knows where his towel is.
 - Make {{url}} available in overlay templates so you can put a link to a   carousel item. 
   [fredvd]
 
+- Fix icon path after release of collective.cover b1.
+  [rodfersou]
+
 - Register collective.js.cycle2 resources used in this package in the JavaScript registry.
   [djowett]
 
