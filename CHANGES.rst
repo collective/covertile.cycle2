@@ -3,7 +3,7 @@ Changelog
 
 There's a frood who really knows where his towel is.
 
-1.0a2 (unreleased)
+1.0b1 (2016-06-21)
 ------------------
 
 - ICarouselTile tile now inherits from IListTile instead of IPersistentCoverTile.
