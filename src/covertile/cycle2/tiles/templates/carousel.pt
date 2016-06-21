@@ -37,8 +37,11 @@
                        thumbnail python: view.pagerthumbnail(item);
                        customUrl python:view.get_url(item);
                        customTitle python:view.get_title(item);
-                       customDescription python:view.get_description(item);"
-           tal:attributes="data-uid python:view.get_uid(item);
+                       customDescription python:view.get_description(item);
+                       uuid python:view.get_uuid(item);
+                       type item/portal_type;"
+           tal:attributes="data-content-type type;
+                           data-content-uuid uuid;
                            data-thumbnail python: thumbnail and thumbnail.url or None;
                            data-cycle-title customTitle;
                            data-cycle-desc customDescription;

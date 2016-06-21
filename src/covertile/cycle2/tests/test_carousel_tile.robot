@@ -42,8 +42,14 @@ Test Carousel Tile
     Create Cover  Title  Description
 
     # add a carousel tile to the layout
-    Edit Cover Layout
+    Open Layout Tab
     Add Tile  ${carousel_tile_location}
+    
+    # Set the image size to original
+    Click Element  css=a.config-tile-link
+    Wait Until Element Is Visible  css=select#covertile-cycle2-carousel-image-imgsize
+    Select From List  css=select#covertile-cycle2-carousel-image-imgsize  _original
+    Click Button  Save
     Save Cover Layout
 
     # as tile is empty, we see default message
@@ -89,7 +95,7 @@ Test Carousel Tile
     Sleep  1s  Wait for carousel to load
     Open Content Chooser
     Click Element  link=Content tree
-
+    
     Drag And Drop  xpath=${document_selector}  css=${tile_selector}
 
     # Any content without an image is silently ignored, so we should not see the Document
@@ -126,7 +132,6 @@ Test Carousel Tile
 
     # Go to the right
     Click Element  xpath=//div[@class='cycle-next']
-
     # Test modified Title
     Wait Until Page Contains Element  css=${slide2_updated}
     Sleep  1s  Wait for Cycle2 to transition
@@ -171,7 +176,7 @@ Test Carousel Tile
 
 
     ## Test customized overlay
-    Edit Cover Layout
+    Open Layout Tab
     Click Element  css=a.config-tile-link
     Wait Until Element Is Visible  css=textarea#covertile-cycle2-carousel-overlay-template
     Input Text  css=textarea#covertile-cycle2-carousel-overlay-template  <div>What a nice overlay</div>
@@ -189,7 +194,7 @@ Test Carousel Tile
     # And that thumbnails are therefore NOT generated
     Page Should Not Contain Element  xpath=//div[@data-thumbnail]
 
-    Edit Cover Layout
+    Open Layout Tab
     Click Element  css=a.config-tile-link
     Wait Until Element Is Visible  css=select#covertile-cycle2-carousel-pager-style
     Select From List  css=select#covertile-cycle2-carousel-pager-style  thumbnails_square
@@ -201,6 +206,6 @@ Test Carousel Tile
 
 
     # delete the tile
-    Edit Cover Layout
+    Open Layout Tab
     Delete Tile
     Save Cover Layout

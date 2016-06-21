@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from collective.cover.testing import generate_jpeg
+from collective.cover.tests.utils import create_standard_content_for_tests
+
 from plone.app.robotframework.testing import AUTOLOGIN_LIBRARY_FIXTURE
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
@@ -22,6 +24,7 @@ class Fixture(PloneSandboxLayer):
         self.applyProfile(portal, 'collective.cover:default')
         self.applyProfile(portal, 'collective.cover:testfixture')
         self.applyProfile(portal, 'covertile.cycle2:default')
+        create_standard_content_for_tests(portal)
         portal['my-image1'].setImage(generate_jpeg(900, 400))
         portal['my-image1'].reindexObject()
         portal['my-image2'].setImage(generate_jpeg(900, 400))

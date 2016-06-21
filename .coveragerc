@@ -1,9 +1,7 @@
 [report]
 omit =
-    /home/*/.buildout/eggs/*
-    /usr/*
-    bin/test
-    buildout-cache/eggs/*
-    eggs/*
-    parts/*
-    src/collective.cover/*
+    */bin/test
+    */eggs/*
+    */lib/python*
+    */parts/*
+    */usr/*

@@ -208,7 +208,7 @@ class CarouselTile(ListTile):
         """
         # First we get the title for the item itself
         title = item.Title()
-        uuid = self.get_uid(item)
+        uuid = self.get_uuid(item)
         data_mgr = ITileDataManager(self)
         data = data_mgr.get()
         uuids = data['uuids']
@@ -229,7 +229,7 @@ class CarouselTile(ListTile):
         """
         # First we get the url for the item itself
         description = item.Description()
-        uuid = self.get_uid(item)
+        uuid = self.get_uuid(item)
         data_mgr = ITileDataManager(self)
         data = data_mgr.get()
         uuids = data['uuids']
@@ -261,7 +261,7 @@ class CarouselTile(ListTile):
         url = item.absolute_url()
         if item.portal_type in self._get_types_that_use_view_action():
             url = url + '/view'
-        uuid = self.get_uid(item)
+        uuid = self.get_uuid(item)
         data_mgr = ITileDataManager(self)
         data = data_mgr.get()
         uuids = data['uuids']
