@@ -135,7 +135,7 @@ class CarouselTileTestCase(TestTileMixin, unittest.TestCase):
         obj1 = self.portal['my-document']
         obj2 = self.portal['my-image']
 
-        self.tile.populate_with_uids([
+        self.tile.populate_with_uuids([
             obj1.UID(), obj2.UID()
         ])
 
@@ -163,7 +163,7 @@ class CarouselTileTestCase(TestTileMixin, unittest.TestCase):
         obj1 = self.portal['my-document']
         obj2 = self.portal['my-image']
 
-        self.tile.populate_with_uids([
+        self.tile.populate_with_uuids([
             obj1.UID(), obj2.UID()
         ])
 
@@ -192,7 +192,7 @@ class CarouselTileTestCase(TestTileMixin, unittest.TestCase):
         obj2 = self.portal['my-image']
         obj3 = self.portal['my-image1']
 
-        self.tile.populate_with_uids([
+        self.tile.populate_with_uuids([
             obj1.UID(), obj2.UID(), obj3.UID()
         ])
 
