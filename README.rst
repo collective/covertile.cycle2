@@ -15,13 +15,14 @@ A carousel tile for `collective.cover`_ based on the `Cycle2`_ slideshow plugin 
 Mostly Harmless
 ---------------
 
-.. image:: https://secure.travis-ci.org/collective/covertile.cycle2.png?branch=master
-    :alt: Travis CI badge
+.. image:: http://img.shields.io/pypi/v/covertile.cycle2.svg
+    :target: https://pypi.python.org/pypi/covertile.cycle2
+
+.. image:: https://img.shields.io/travis/collective/covertile.cycle2/master.svg
     :target: http://travis-ci.org/collective/covertile.cycle2
 
-.. image:: https://coveralls.io/repos/collective/covertile.cycle2/badge.png
-    :alt: Coveralls badge
-    :target: https://coveralls.io/r/collective/covertile.cycle2?branch=master
+.. image:: https://img.shields.io/coveralls/collective/covertile.cycle2/master.svg
+    :target: https://coveralls.io/r/collective/covertile.cycle2
 
 Got an idea? Found a bug? Let us know by `opening a support ticket`_.
 
