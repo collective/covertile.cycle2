@@ -56,13 +56,13 @@ setup(
     ],
     extras_require={
         'test': [
+            'collective.cover [test]',
             'plone.app.robotframework',
             'plone.app.testing [robot]',
             'plone.browserlayer',
             'plone.testing',
             'plone.uuid',
             'robotsuite',
-            'tzlocal',
         ],
     },
     entry_points="""

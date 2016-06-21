@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from collective.cover.interfaces import ITileEditForm
-from collective.cover.tiles.base import IPersistentCoverTile
 from collective.cover.tiles.configuration_view import IDefaultConfigureForm
+from collective.cover.tiles.list import IListTile
 from collective.cover.tiles.list import ListTile
 from collective.cover.widgets.textlinessortable import TextLinesSortableFieldWidget
 from covertile.cycle2 import _
@@ -34,9 +34,7 @@ DEFAULT_OVERLAY_TEMPLATE = (u'<div id="c2-overlay-title">{{title}}</div>'
                             u'<div id="c2-overlay-desc">{{desc}}</div>')
 
 
-# Note the interface inherits from the base class, but the class inherits from
-# ListTile
-class ICarouselTile(IPersistentCoverTile):
+class ICarouselTile(IListTile):
 
     """A carousel based on the Cycle2 slideshow plugin for jQuery."""
 

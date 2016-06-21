@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0a2 (unreleased)
 ------------------
 
+- ICarouselTile tile now inherits from IListTile instead of IPersistentCoverTile.
+  [hvelarde]
+
 - Make package compatible with collective.cover >= 1.0b1.
   It is recommended that you upgrade to the latest version of the package.
   [rodfersou, hvelarde, fredvd]
