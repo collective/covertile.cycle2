@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-03-25 18:38+0000\n"
+"POT-Creation-Date: 2016-06-21 16:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,24 +14,83 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: Tile description in tiles/tiles.zcml
+#: ../tiles/carousel.py:107
+msgid "A Mustache-style template string, in which you can use {{title}}, {{desc}}, {{url}} or {{date}}"
+msgstr ""
+
+#: ../tiles/tiles.zcml:21
 msgid "A tile showing Cycle2 based carousel of images."
 msgstr ""
 
-#: ./tiles/carousel.py:22
+#: ../tiles/carousel.py:88
 msgid "Auto play"
 msgstr ""
 
-#: Tile title in tiles/tiles.zcml
+#: ../tiles/tiles.zcml:21
 msgid "Cycle2 Carousel Tile"
 msgstr ""
 
-#: ./tiles/templates/carousel.pt:15
+#: ../tiles/carousel.py:21
+msgid "Dots"
+msgstr ""
+
+#: ../tiles/carousel.py:42
+msgid "Elements"
+msgstr ""
+
+#: ../tiles/carousel.py:57
+msgid "Image"
+msgstr ""
+
+#: ../profiles.zcml:15
+msgid "Install the covertile.cycle2 product in Plone"
+msgstr ""
+
+#: ../tiles/carousel.py:22
+msgid "Numbers"
+msgstr ""
+
+#: ../tiles/carousel.py:106
+msgid "Overlay Template"
+msgstr ""
+
+#: ../tiles/carousel.py:96
+msgid "Pager"
+msgstr ""
+
+#: ../profiles.zcml:24
+msgid "Remove covertile.cycle2 from Plone"
+msgstr ""
+
+#: ../tiles/carousel.py:71
+msgid "Show more... link"
+msgstr ""
+
+#: ../tiles/carousel.py:79
+msgid "Show more... link text"
+msgstr ""
+
+#: ../tiles/carousel.py:23
+msgid "Square Thumbnails"
+msgstr ""
+
+#: ../tiles/templates/carousel.pt:9
 msgid "This carousel is empty; open the content chooser and drag-and-drop some items here."
 msgstr ""
 
-#. Default: "C2 Carousel"
-#: ./tiles/carousel.py:39
-msgid "msg_short_name_carousel"
+#: ../tiles/carousel.py:64
+msgid "Tile Title"
 msgstr ""
 
+#: ../profiles.zcml:15
+msgid "covertile.cycle2: A Cycle2 based carousel tile for collective.cover"
+msgstr ""
+
+#: ../profiles.zcml:24
+msgid "covertile.cycle2: Uninstall product"
+msgstr ""
+
+#. Default: "C2 Carousel"
+#: ../tiles/carousel.py:124
+msgid "msg_short_name_carousel"
+msgstr ""

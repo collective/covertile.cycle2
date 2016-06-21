@@ -6,8 +6,7 @@ There's a frood who really knows where his towel is.
 1.0b2 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Make {{url}} available in overlay templates so you can put a link to a carousel item. [fredvd]
 
 1.0b1 (2016-06-21)
 ------------------
