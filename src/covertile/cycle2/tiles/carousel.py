@@ -104,7 +104,7 @@ class ICarouselTile(IListTile):
 
     overlay = schema.SourceText(
         title=_(u'Overlay Template'),
-        description=_(u'A Mustache-style template string, in which you can use {{title}}, {{desc}} or {{date}}'),
+        description=_(u'A Mustache-style template string, in which you can use {{title}}, {{desc}}, {{url}} or {{date}}'),
         required=False,
         default=DEFAULT_OVERLAY_TEMPLATE,
     )

@@ -204,6 +204,16 @@ Test Carousel Tile
     Compose Cover
     Page Should Contain Element  css=div.cycle-pager > a > img
 
+    ## test the {{url}} variable
+    Open Layout Tab
+    Click Element  css=a.config-tile-link
+    Wait Until Element Is Visible  css=textarea#covertile-cycle2-carousel-overlay-template
+    Input Text  css=textarea#covertile-cycle2-carousel-overlay-template  <div><a href="{{url}}">This is a link!</a></div>
+    Click Button  Save
+    Click Link  link=View
+    # test for custom url set above in this robot test
+    Wait Until Page Contains Element  css=div.cycle-overlay div
+    Page Should Contain Element  xpath=//div[@class='cycle-overlay']//a[@href='http://www.google.com']
 
     # delete the tile
     Open Layout Tab
