@@ -3,7 +3,7 @@ Changelog
 
 There's a frood who really knows where his towel is.
 
-1.0b2 (unreleased)
+1.0.0 (2020-09-09)
 ------------------
 
 - Make {{url}} available in overlay templates so you can put a link to a carousel item. [fredvd]

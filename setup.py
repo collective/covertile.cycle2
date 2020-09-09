@@ -2,7 +2,7 @@
 from setuptools import find_packages
 from setuptools import setup
 
-version = '1.0b2.dev0'
+version = '1.0.0'
 description = 'A carousel tile for collective.cover based on the Cycle2 slideshow plugin for jQuery.'
 long_description = (
     open('README.rst').read() + '\n' +
